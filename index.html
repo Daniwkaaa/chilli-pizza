@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chili Pizza — Ужгород</title>
+<meta name="description" content="Chili Pizza — мережа ресторанів для всієї сім'ї в Ужгороді. Повне меню з цінами, 3 ресторани, доставка щодня з 10:00 до 22:30.">
+<meta name="theme-color" content="#0d0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0a0a;--g:#1d1d1f;--r:#d4261c;--r2:#e5352c;--rd:#7d130d;--c:#f5eddf;--w:#fff;--m:#6b655c;--gold:#e3b868;--gr:#1f7a4d;--hh:64px;--ch:8}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.5 Onest,system-ui,sans-serif;color:var(--c);overflow-x:hidden;-webkit-tap-highlight-color:transparent;
+ background:radial-gradient(ellipse at 85% 0,#5a110b66,transparent 55%),radial-gradient(ellipse at 0 60%,#0f2a1f88,transparent 50%),var(--bg);background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.06;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.lock{overflow:hidden}
+h1,h2,h3{font-family:Unbounded,Onest,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* header */
+header{position:sticky;top:0;z-index:25;background:#0d0a0ad9;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #ffffff12;padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;gap:18px;height:var(--hh)}
+.logo{font:800 21px Unbounded,sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px;white-space:nowrap}.logo b{color:var(--r2)}
+.logo svg{width:26px;height:26px}
+nav.top{margin-left:auto;display:flex;gap:6px;font-size:14px}
+nav.top a{text-decoration:none;opacity:.8;padding:8px 12px;border-radius:99px;transition:opacity .2s,background .2s}
+nav.top a:hover{opacity:1;background:#ffffff12}nav.top a.act{opacity:1;background:#d4261c33;color:#ff8b80}
+.hphone{font-weight:700;text-decoration:none;font-size:14px;white-space:nowrap;opacity:.9}.hphone:hover{color:var(--gold)}
+.btn{background:linear-gradient(135deg,#e5352c,#b01b12);color:#fff;border:0;border-radius:99px;padding:12px 22px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 20px #d4261c55,inset 0 1px 0 #fff4;transition:transform .15s,filter .15s,box-shadow .2s;line-height:1.2;text-align:center}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn:active{transform:scale(.97)}
+.btn.o{background:transparent;border:2px solid currentColor;color:inherit;box-shadow:none}
+.btn.g{background:linear-gradient(135deg,#f0cf8a,#c8963e);color:#1d1d1f;box-shadow:0 6px 20px #e3b86844}
+.btn.sm{padding:8px 14px;font-size:14px}
+.btn[disabled]{opacity:.5;pointer-events:none}
+#cartb{position:relative;padding:10px 16px}
+.cnt{background:#fff;color:var(--r);border-radius:99px;padding:0 7px;font-size:13px;min-width:22px;display:inline-block;text-align:center}
+.cnt.bump{animation:bump .5s}@keyframes bump{40%{transform:scale(1.5)}}
+#burg{display:none;background:none;border:0;width:44px;height:44px;padding:10px;margin-left:-6px}
+#burg i{display:block;height:2px;background:var(--c);margin:5px 0;border-radius:2px;transition:transform .3s,opacity .3s}
+#burg[aria-expanded=true] i:nth-child(1){transform:translateY(7px) rotate(45deg)}#burg[aria-expanded=true] i:nth-child(2){opacity:0}#burg[aria-expanded=true] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mnav{position:fixed;inset:0;z-index:24;background:radial-gradient(ellipse at 80% 0,#7d130d,#0d0a0a 70%);padding:calc(var(--hh) + env(safe-area-inset-top,0px) + 24px) 24px 24px;display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+#mnav.on{opacity:1;visibility:visible}
+#mnav a.l{font:800 28px Unbounded,sans-serif;text-decoration:none;padding:10px 0;border-bottom:1px solid #ffffff14;transform:translateY(20px);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
+#mnav.on a.l{transform:none;opacity:1}#mnav.on a.l:nth-child(2){transition-delay:.05s}#mnav.on a.l:nth-child(3){transition-delay:.1s}#mnav.on a.l:nth-child(4){transition-delay:.15s}#mnav.on a.l:nth-child(5){transition-delay:.2s}
+#mnav .mx{margin-top:auto;display:grid;gap:10px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 75% 40%,#7d130dd0 0,#2a121066 45%,transparent 78%)}
+.hero::before{content:"CHILI";position:absolute;left:-2vw;top:4%;font:800 30vw/1 Unbounded,sans-serif;color:transparent;-webkit-text-stroke:2px #ffffff10;pointer-events:none;white-space:nowrap}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 52%,#e5352c30 52.3%,transparent 68%),linear-gradient(115deg,transparent 70%,#e3b86818 70.2%,transparent 72%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"a s" "b s";column-gap:30px;align-items:center;padding-top:44px;padding-bottom:56px}
+.ha{grid-area:a;align-self:end}.hb{grid-area:b;align-self:start}#stage{grid-area:s}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#ffffff10;border:1px solid #ffffff22;border-radius:99px;padding:6px 14px 6px 8px;font-size:13px;margin-bottom:18px}
+.badge i{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 #3ddc84;animation:pulse 2s infinite}.badge i.off{background:#ff6b5e;animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 8px #3ddc8400}}
+.hero h1{font-size:clamp(34px,6vw,70px);font-weight:800}
+.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,#ff6b5e,var(--gold));-webkit-background-clip:text;background-clip:text}
+.hero p{max-width:46ch;opacity:.82;margin:20px 0 26px}
+.hbtn{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.stats div{font-size:13px;opacity:.75}.stats b{display:block;font:800 24px Unbounded,sans-serif;color:var(--gold);opacity:1}
+.ha,.hb{animation:up 1s cubic-bezier(.2,.8,.2,1) backwards}.hb{animation-delay:.15s}
+@keyframes up{from{opacity:0;transform:translateY(40px);filter:blur(8px)}}
+#stage{position:relative;aspect-ratio:1;width:100%;max-width:620px;justify-self:center}
+#stage canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+#stage canvas.pt{cursor:pointer}#stage canvas:active{cursor:grabbing}
+.pctl{position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:13px}
+.pctl label{display:flex;align-items:center;gap:8px;background:#0d0a0ab3;border:1px solid #ffffff1f;border-radius:99px;padding:6px 14px;backdrop-filter:blur(6px)}
+.pctl input{width:110px;accent-color:var(--r2)}
+.pctl button{background:#0d0a0ab3;border:1px solid #ffffff1f;border-radius:99px;padding:7px 14px;backdrop-filter:blur(6px);transition:background .2s}
+.pctl button:hover{background:#d4261c66}
+.phint{position:absolute;top:2%;left:50%;transform:translateX(-50%);font-size:12px;opacity:.6;white-space:nowrap;pointer-events:none;transition:opacity .6s}
+.ly{position:absolute;right:0;top:14%;display:flex;flex-direction:column;gap:40px;font:800 12px Unbounded,sans-serif;pointer-events:none}
+.ly span{opacity:0;transition:opacity .3s,transform .3s;transform:translateX(10px);background:var(--r);color:#fff;border-radius:99px;padding:4px 12px}.ly.on span{opacity:1;transform:none}
+.pz{aspect-ratio:1;border-radius:50%;width:80%;margin:10%;background:radial-gradient(circle,#e8a93a 0 38%,#d4261c 39% 41%,#f0c46a 42% 88%,#b9792c 89%);box-shadow:0 30px 80px #d4261c66;position:relative;animation:sp 40s linear infinite}
+.pz i{position:absolute;width:13%;aspect-ratio:1;border-radius:50%;background:var(--r);box-shadow:inset -4px -4px 0 #0003}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.mq{background:var(--r);color:#fff;overflow:hidden;white-space:nowrap;border-block:3px solid #1d1d1f;position:relative;z-index:3}
+.mq div{display:inline-block;padding:12px 0;font:800 17px Unbounded,sans-serif;animation:mq 30s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:72px 0;position:relative}
+h2{font-size:clamp(28px,4.4vw,46px);margin-bottom:10px}
+.sub{opacity:.7;margin:0 0 26px;max-width:60ch}
+.note{font-size:13px;color:#3a352f;background:var(--c);border-radius:10px;padding:10px 12px;margin:12px 0}
+
+/* hits */
+.hits{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+.hits::-webkit-scrollbar{display:none}
+.hit{scroll-snap-align:start;background:linear-gradient(160deg,#2a1210,#141012);border:1px solid #ffffff1a;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:8px;text-align:left;transition:transform .2s,border-color .2s}
+.hit:hover{transform:translateY(-4px);border-color:#e3b86866}.hit .ph{height:120px;border-radius:14px}
+.hit b{font:700 16px Onest,sans-serif}.hit span{color:var(--gold);font-weight:700}
+
+/* menu */
+#menu{background:radial-gradient(ellipse at 15% 0,hsl(var(--ch) 85% 26%/.7),transparent 62%);padding-top:72px;padding-bottom:40px;overflow:clip;transition:background .6s}
+#cw{position:absolute;right:-10px;top:30px;font:800 clamp(60px,15vw,190px)/1 Unbounded;color:hsl(var(--ch) 80% 50%/.12);pointer-events:none;white-space:nowrap}
+#cw.on{animation:cw .7s cubic-bezier(.2,.8,.2,1)}@keyframes cw{from{opacity:0;transform:translateX(80px) scale(1.1)}}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;position:relative}
+.tools input,.tools select{border:1px solid #ffffff2a;background:#ffffff10;color:var(--c);border-radius:14px;padding:12px 14px;font:inherit;min-width:0;flex:1}
+.tools input::placeholder{color:#f5eddf88}.tools select option{color:#1d1d1f}
+.tools select{flex:0 1 220px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;position:sticky;top:calc(var(--hh) + env(safe-area-inset-top,0px));background:#0d0a0ad9;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:10;scrollbar-width:none;scroll-padding:0 20px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:0;border-radius:14px;padding:11px 18px;background:linear-gradient(135deg,#7d130d,#1d1d1f);color:var(--c);font:700 12px Unbounded,sans-serif;transform:skewX(-8deg);transition:transform .25s,background .25s,box-shadow .25s}
+.chip:hover{transform:skewX(-8deg) translateY(-2px)}
+.chip[aria-pressed=true]{background:linear-gradient(135deg,#ee3b30,#a3170f);box-shadow:0 6px 18px #d4261c77,inset 0 -3px 0 var(--gold);transform:skewX(-8deg) scale(1.05)}
+.chip small{opacity:.6;margin-left:4px}
+.cat-h{margin:34px 0 14px;font-size:22px;display:flex;align-items:baseline;gap:10px}.cat-h small{font:500 13px Onest,sans-serif;opacity:.55}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:#ffffff0d;color:var(--c);border:1px solid #ffffff1c;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0;font:inherit;transition:transform .15s,box-shadow .2s,border-color .2s;animation:rv .55s backwards;animation-delay:calc(var(--i,0)*40ms);will-change:transform}
+@keyframes rv{from{opacity:0;transform:translateY(28px) rotateX(-14deg)}}
+.card:hover{box-shadow:0 18px 40px #0007;border-color:#e3b86855}
+.ph{height:150px;display:grid;place-items:center;background:radial-gradient(circle at 70% 25%,hsl(var(--ch) 80% 55%/.5),transparent 60%),linear-gradient(135deg,hsl(var(--ch) 70% 36%),hsl(var(--ch) 60% 12%))}
+.ph svg{height:86%;width:auto;filter:drop-shadow(0 10px 12px #0008);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+.card:hover .ph svg{transform:scale(1.1) rotate(-4deg)}
+.cb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cb h3{font:700 16px/1.25 Onest,sans-serif}.cb p{margin:0;font-size:13px;color:#f5eddfb3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pr{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;padding-top:8px}
+.pr .p{color:var(--gold);white-space:nowrap}.pr .w{font-weight:500;font-size:13px;opacity:.6;margin-right:auto}
+.add{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--r2);color:#fff;font-size:22px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 12px #d4261c66;transition:transform .15s}
+.add:hover{transform:scale(1.1) rotate(90deg)}.add.ok{background:var(--gr)}
+.tag{font-size:11px;background:var(--r);color:#fff;border-radius:6px;padding:1px 7px;font-weight:700;margin-left:6px;vertical-align:2px;font-family:Onest}
+.tag.hot{background:#7d130d}
+.big{grid-column:span 2;background:linear-gradient(135deg,hsl(var(--ch) 75% 30%),#1a0a08)!important}.big .ph{height:200px;background:radial-gradient(circle at 70% 30%,#ff6b5e55,transparent 60%),#0003}
+@media(max-width:600px){.big{grid-column:auto}}
+.empty{padding:40px 0;text-align:center;opacity:.8}
+
+/* restaurants */
+#restaurants{background:#f5eddff5;color:var(--g);border-top:8px solid var(--gr)}
+#restaurants .sub{opacity:.75}
+.rgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;align-items:start}
+.rlist{display:grid;gap:12px}
+.rc{background:#fff;border-radius:20px;padding:18px 20px;border:2px solid transparent;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;text-align:left;color:var(--g);width:100%}
+.rc:hover{transform:translateY(-2px);box-shadow:0 10px 24px #0001}.rc[aria-pressed=true]{border-color:var(--r)}
+.rc h3{font:700 17px/1.3 Onest,sans-serif;margin-bottom:4px}.rc p{margin:2px 0;font-size:14px;color:#4a453e}
+.rc .st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:99px;padding:2px 10px;margin-bottom:8px;background:#e6f4ec;color:#1f7a4d}
+.rc .st.off{background:#fbe5e3;color:#b01b12}.rc .st.unk{background:#eee;color:#555}
+.rc .ra{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.rc .btn.o{color:var(--g)}
+.map{border-radius:22px;overflow:hidden;background:#e8dfcf;aspect-ratio:4/3.4;position:sticky;top:calc(var(--hh) + 20px);box-shadow:0 20px 50px #0002}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.map .mph{display:grid;place-items:center;height:100%;text-align:center;padding:20px;color:#6b655c}
+
+/* delivery */
+.dark{background:linear-gradient(160deg,#0f2a1fcc,#1d1d1fb3 70%)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.box{border:1px solid #e3b86855;border-radius:20px;padding:22px;background:#ffffff06}
+.box h3{font:700 18px Onest,sans-serif;margin-bottom:8px;display:flex;gap:10px;align-items:center}.box h3 span{font-size:22px}.box p{margin:4px 0;opacity:.88}
+.calc{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#ffffff0d;border-radius:18px;padding:16px 18px}
+.calc input{width:120px;border:1px solid #ffffff33;background:#0003;color:var(--c);border-radius:10px;padding:10px;font:inherit}
+
+/* contacts */
+#contacts{background:#0d0a0a99}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ci{display:flex;gap:14px;align-items:center;background:#ffffff0b;border:1px solid #ffffff1a;border-radius:18px;padding:16px 18px;text-decoration:none;transition:background .2s,transform .2s}
+.ci:hover{background:#d4261c33;transform:translateY(-2px)}.ci i{font-style:normal;font-size:24px;width:44px;height:44px;border-radius:14px;background:#d4261c44;display:grid;place-items:center;flex:none}
+.ci small{display:block;opacity:.6;font-size:12px}.ci b{font-weight:700}
+footer{background:#000;color:#fffb;padding:36px 0 120px;font-size:14px;position:relative;z-index:1}
+footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:center}footer nav a{margin-right:16px}footer p{margin:0;opacity:.7}
+
+/* bottom nav (mobile) */
+.bn{display:none}
+/* dialogs */
+dialog{border:0;border-radius:24px;padding:0;max-width:540px;width:calc(100% - 24px);max-height:calc(100dvh - 24px);color:#fff;background:linear-gradient(160deg,hsl(var(--ch) 70% 26%),#141012 72%);box-shadow:0 30px 80px #000a;overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:#000b;backdrop-filter:blur(4px)}
+dialog[open]{animation:zin .45s cubic-bezier(.2,.9,.2,1)}@keyframes zin{from{opacity:0;transform:scale(.85) translateY(40px)}}
+.dc{padding:22px;position:relative}
+.dx{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:#0006;color:#fff;font-size:18px;z-index:2}
+.v3{height:250px;margin:-6px -6px 8px;touch-action:pan-y;cursor:grab;border-radius:16px;background:radial-gradient(circle at 50% 55%,#ff6b5e44,transparent 65%)}.v3 canvas{width:100%;height:100%;display:block}
+.v3h{font-size:12px;opacity:.55;text-align:center;margin:-6px 0 8px}
+dialog .note{background:#ffffff1c;color:#fffd}
+.q{display:inline-flex;align-items:center;gap:12px;border:2px solid #fff;border-radius:99px;padding:2px}
+.q button{width:36px;height:36px;border:0;border-radius:50%;background:#fff;color:var(--g);font-size:18px;line-height:1}
+.q b{min-width:16px;text-align:center}
+.dact{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+
+/* cart drawer */
+#drawer{position:fixed;inset:0 0 0 auto;width:min(430px,100%);background:#fff;color:var(--g);z-index:40;transform:translateX(105%);transition:transform .55s cubic-bezier(.2,.9,.2,1);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:-20px 0 60px #0006}
+#drawer.on{transform:none}
+#ov{position:fixed;inset:0;background:#0008;z-index:30;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;backdrop-filter:blur(5px)}#ov.on{opacity:1;visibility:visible}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #0002}
+.dh .btn.o{color:var(--g);width:42px;height:42px;padding:0}
+#items{flex:1;overflow:auto;padding:8px 20px;overscroll-behavior:contain}
+.li{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #0001;font-size:14px}
+.li>div:nth-child(2){flex:1;min-width:0}.li small{color:var(--m)}
+.li .q{border-color:var(--g);gap:8px}.li .q button{background:var(--g);color:#fff;width:30px;height:30px;font-size:16px}
+.th{flex:none;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--r),#5a0d08);display:grid;place-items:center}.th svg{width:38px;height:38px}
+.df{padding:16px 20px;border-top:1px solid #0002}.row{display:flex;justify-content:space-between;margin:3px 0}
+.bar{height:6px;background:#0002;border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--r),var(--gold));transition:width .4s}
+#drawer .note{background:#f5eddf}
+.clr{background:none;border:0;color:var(--m);text-decoration:underline;font-size:13px;padding:6px 0}
+
+/* checkout */
+#ck form{display:grid;gap:12px}
+#ck label{display:grid;gap:4px;font-size:13px;opacity:.95}
+#ck input,#ck textarea,#ck select{border:1px solid #ffffff33;background:#0004;color:#fff;border-radius:12px;padding:11px 12px;font:inherit;width:100%}
+#ck select option{color:#1d1d1f}
+#ck input:invalid:not(:placeholder-shown){border-color:#ff6b5e}
+.seg{display:flex;background:#0004;border-radius:99px;padding:4px;gap:4px}
+.seg label{flex:1;display:block!important;text-align:center;border-radius:99px;padding:9px;cursor:pointer;font-weight:700;font-size:14px!important}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--r2)}
+#ck pre{white-space:pre-wrap;background:#0005;border-radius:12px;padding:14px;font:13px/1.5 ui-monospace,Menlo,monospace;max-height:260px;overflow:auto}
+.err{color:#ff8b80;font-size:13px;min-height:1em;margin:0}
+
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:#1d1d1f;color:#fff;border:1px solid #e3b86866;border-radius:99px;padding:10px 18px;font-weight:700;font-size:14px;z-index:70;opacity:0;pointer-events:none;transition:.35s cubic-bezier(.2,.9,.2,1);white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.fly{position:fixed;z-index:60;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#ffd37a,var(--r));pointer-events:none}
+
+/* chef */
+#chef{position:fixed;left:8px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:flex-start;pointer-events:none}
+#chef svg{filter:drop-shadow(0 8px 10px #0006);animation:cb 3.2s ease-in-out infinite;transform-origin:50% 100%;pointer-events:auto;cursor:pointer}
+@keyframes cb{50%{transform:translateY(-5px) rotate(1.5deg)}}
+.cbub{margin:6px 0 0 4px;max-width:min(240px,58vw);background:#f5eddf;color:#1d1d1f;border-radius:16px 16px 16px 4px;padding:10px 13px;font:600 13px/1.35 Onest,sans-serif;box-shadow:0 8px 24px #0005;opacity:0;transform:translateY(8px) scale(.9);transform-origin:0 100%;transition:.35s cubic-bezier(.2,.9,.2,1)}
+#chef.talk .cbub{opacity:1;transform:none}
+#chef.jump svg{animation:cj .7s}@keyframes cj{30%{transform:translateY(-24px) rotate(-7deg)}60%{transform:translateY(0) rotate(5deg)}}
+#chef .lid{transform-box:fill-box;transform-origin:center;transform:scaleY(0)}#chef.blink .lid{transform:scaleY(1)}
+#chef #arm{transform-box:fill-box;transform-origin:20% 90%}#chef.wave #arm{animation:wv .9s ease-in-out 2}
+@keyframes wv{50%{transform:rotate(-28deg)}}
+#chef.indlg{position:fixed;bottom:10px}
+
+.sr{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s}.sr.in{opacity:1;transform:none;filter:none}
+
+@media(max-width:980px){nav.top{display:none}.hphone{display:none}#burg{display:block}header .wrap{gap:10px}#cartb{margin-left:auto}}
+@media(max-width:860px){.rgrid{grid-template-columns:1fr}.map{position:relative;top:0;aspect-ratio:4/3;order:-1}}
+@media(max-width:760px){
+ :root{--hh:58px}
+ .wrap{padding:0 16px}
+ .hero .wrap{grid-template-columns:1fr;grid-template-areas:"a" "s" "b";padding-top:26px;padding-bottom:36px;row-gap:6px}
+ #stage{max-width:440px;margin:0 -8px;width:calc(100% + 16px)}
+ .hero p{margin:6px 0 20px}.stats{gap:18px;margin-top:24px}.stats b{font-size:20px}
+ .hbtn .btn{flex:1 1 140px}
+ #stage{aspect-ratio:auto}#stage canvas{aspect-ratio:1;height:auto}.pctl{position:static;margin-top:-6px;font-size:12px}.pctl input{width:80px}.ly{gap:28px;font-size:10px;top:18%}
+ section{padding:56px 0}
+ .chips{padding:10px 16px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+ .ph{height:120px}.cb{padding:12px}.add{width:34px;height:34px;font-size:19px}.pr{gap:4px}.pr .w{font-size:11px}.cb h3{font-size:15px}.cb p{-webkit-line-clamp:2;font-size:12px}
+ .tools select{flex:1 1 100%}
+ #cartb{display:none}
+ .bn{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:22;background:#0d0a0aeb;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid #ffffff14;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));gap:4px}
+ .bn a,.bn button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;border:0;background:none;text-decoration:none;font-size:11px;font-weight:700;border-radius:12px;color:var(--c);opacity:.85}
+ .bn .ic{font-size:20px;line-height:1;position:relative}
+ .bn .cnt{position:absolute;top:-6px;right:-14px;font-size:11px;min-width:18px;padding:0 4px;background:var(--r2);color:#fff}
+ .bn .main{background:linear-gradient(135deg,#e5352c,#b01b12);opacity:1}
+ #chef{bottom:calc(70px + env(safe-area-inset-bottom,0px));left:4px}#chef svg{width:64px;height:76px}
+ .toast{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+ footer{padding-bottom:170px}
+ dialog{width:100%;max-width:none;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:92dvh}
+ dialog[open]{animation:sheet .45s cubic-bezier(.2,.9,.2,1)}@keyframes sheet{from{transform:translateY(100%)}}
+ .v3{height:210px}
+ dialog .dc{padding-bottom:120px}
+}
+@media(max-width:380px){.pr .w{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head><body>
+<header><div class="wrap">
+<button id="burg" aria-label="Меню навігації" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
+<a class="logo" href="#top" aria-label="Chili Pizza — на головну"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 25c-3 3-6 2-6 2s3-1 5-4c5-8 10-14 18-15 3 0 5 2 4 5-2 7-12 9-21 12z" fill="#e5352c"/><path d="M24 8c0-3 2-5 4-5" stroke="#2f8a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>Chili<b>Pizza</b></a>
+<nav class="top" aria-label="Основна навігація"><a href="#menu">Меню</a><a href="#restaurants">Ресторани</a><a href="#delivery">Доставка</a><a href="#contacts">Контакти</a></nav>
+<a class="hphone" href="tel:+380660203777">(066) 02-03-777</a>
+<button class="btn" id="cartb" aria-label="Відкрити кошик">🛒 Кошик <span class="cnt" data-cnt>0</span></button>
+</div></header>
+<div id="mnav" aria-hidden="true">
+<a class="l" href="#top">Головна</a><a class="l" href="#menu">Меню</a><a class="l" href="#restaurants">Ресторани</a><a class="l" href="#delivery">Доставка</a><a class="l" href="#contacts">Контакти</a>
+<div class="mx"><a class="btn" href="tel:+380660203777">📞 Доставка: (066) 02-03-777</a><a class="btn o" href="https://chilipizza.choiceqr.com/uk" target="_blank" rel="noopener">Замовити в ChoiceQR</a></div>
+</div>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+ <div class="ha">
+  <span class="badge"><i id="liveDot"></i><span id="liveTxt">Ужгород · 3 ресторани</span></span>
+  <h1>Піца, яка <em>збирає</em> за одним столом</h1>
+ </div>
+ <div id="stage">
+  <canvas id="pzc" aria-label="3D-піца: тягніть, щоб крутити; торкніться шматочка, щоб витягнути його" role="img"></canvas>
+  <div class="phint" id="phint">Тягни, щоб крутити · торкнись — витягни шматочок</div>
+  <div class="ly" id="ly" aria-hidden="true"><span>Начинка</span><span>Сир</span><span>Соус</span><span>Тісто</span></div>
+  <div class="pctl" id="pctl" hidden>
+   <label>Шари<input type="range" min="0" max="100" value="0" id="exr" aria-label="Розібрати піцу на шари"></label>
+   <button type="button" id="slb">🍕 Шматочок</button>
+   <button type="button" id="rbb">↻ Зібрати</button>
+  </div>
+  <div class="pz" id="pzfb" role="img" aria-label="Ілюстрація піци" hidden><i style="top:18%;left:44%"></i><i style="top:45%;left:70%"></i><i style="top:68%;left:40%"></i><i style="top:42%;left:14%"></i><i style="top:24%;left:68%"></i></div>
+ </div>
+ <div class="hb">
+  <p>Chili Pizza — мережа ресторанів для всієї сім'ї в Ужгороді. Піца, паста, роли, гриль і десерти — доставка щодня з 10:00 до 22:30.</p>
+  <div class="hbtn"><a class="btn" href="#menu">Дивитись меню</a><a class="btn o" href="tel:+380660203777">📞 Замовити дзвінком</a></div>
+  <div class="stats"><div><b>3</b>ресторани в місті</div><div><b>10–22:30</b>доставка щодня</div><div><b>500 ₴</b>безкоштовна доставка від</div></div>
+ </div>
+</div></div>
+
+<div class="mq" aria-hidden="true"><div>ДОСТАВКА З 10:00 ДО 22:30 • БЕЗКОШТОВНО ВІД 500 ГРН • ПІЦА • РОЛИ • ГРИЛЬ • ПАСТА • ДЕСЕРТИ • ДОСТАВКА З 10:00 ДО 22:30 • БЕЗКОШТОВНО ВІД 500 ГРН • ПІЦА • РОЛИ • ГРИЛЬ • ПАСТА • ДЕСЕРТИ • </div></div>
+
+<section id="hits" style="padding-bottom:20px"><div class="wrap"><h2>Хіти кухні</h2><p class="sub">Те, з чого варто почати знайомство з Chili.</p><div class="hits" id="hitl"></div></div></section>
+
+<section id="menu"><div class="wrap"><h2>Меню</h2><p class="sub" id="msub">Ціни в гривнях. Торкніться страви, щоб переглянути її в 3D.</p>
+<div class="tools"><input type="search" id="q" placeholder="🔍 Пошук страви або інгредієнта" aria-label="Пошук страви" autocomplete="off"><select id="sort" aria-label="Сортування"><option value="">Як у меню</option><option value="a">Ціна: зростання</option><option value="d">Ціна: спадання</option><option value="h">Спочатку гострі</option></select></div></div>
+<div class="chips" id="chips" role="group" aria-label="Категорії"></div>
+<div class="wrap" id="list" aria-live="polite"></div>
+<div class="wrap"><p class="note" style="margin:30px 0 0">Ціни «від» — за базовий розмір чи варіант, остаточну суму підтвердить оператор. Пакування рахується окремо (див. «Доставка»).</p></div></section>
+
+<section id="restaurants"><div class="wrap"><h2>Наші ресторани</h2><p class="sub">Три заклади в Ужгороді. Оберіть ресторан, щоб побачити його на мапі.</p>
+<div class="rgrid"><div class="rlist" id="rest"></div><div class="map" id="map"><div class="mph">Мапа завантажується…</div></div></div></div></section>
+
+<section class="dark" id="delivery"><div class="wrap"><h2>Доставка</h2><p class="sub">Привеземо гарячим — щодня з 10:00 до 22:30.</p><div class="three">
+<div class="box"><h3><span>⏰</span>Години</h3><p>Щодня з 10:00 до 22:30</p><p><a href="tel:+380660203777"><b>(066) 02-03-777</b></a></p></div>
+<div class="box"><h3><span>🚚</span>Вартість</h3><p>Безкоштовно в межах міста від 500 грн.</p><p>За містом мінімальне замовлення від 500 грн, діє доплата — розмір озвучить оператор.</p></div>
+<div class="box"><h3><span>📦</span>Пакування</h3><p>Додається автоматично: гарніри, салати, сковорідки — 15 грн, основні страви — 17 грн.</p><p>До піци додається за розміром: 11 / 13 / 17 грн.</p></div></div>
+<div class="calc"><b>Скільки до безкоштовної доставки?</b><label>Сума замовлення, ₴ <input type="number" id="calcv" min="0" step="10" inputmode="numeric" placeholder="напр. 380"></label><span id="calcr" aria-live="polite"></span></div>
+</div></section>
+
+<section id="contacts"><div class="wrap"><h2>Контакти</h2><p class="sub">Пишіть, телефонуйте або замовляйте онлайн.</p><div class="cgrid">
+<a class="ci" href="tel:+380660203777"><i>📞</i><span><small>Доставка</small><b>(066) 02-03-777</b></span></a>
+<a class="ci" href="https://chilipizza.choiceqr.com/uk" target="_blank" rel="noopener"><i>🧾</i><span><small>Онлайн-замовлення</small><b>ChoiceQR</b></span></a>
+<a class="ci" href="https://www.instagram.com/chili.uzh/" target="_blank" rel="noopener"><i>📸</i><span><small>Instagram</small><b>@chili.uzh</b></span></a>
+<a class="ci" href="https://www.facebook.com/chilipizzauzhgorod/" target="_blank" rel="noopener"><i>👍</i><span><small>Facebook</small><b>chilipizzauzhgorod</b></span></a>
+</div></div></section></main>
+
+<footer><div class="wrap"><nav aria-label="Нижня навігація"><a href="#menu">Меню</a><a href="#restaurants">Ресторани</a><a href="#delivery">Доставка</a><a href="#contacts">Контакти</a></nav><p>© Chili Pizza, Ужгород. Дані меню: chilipizza.uz.ua та ChoiceQR.</p></div></footer>
+
+<nav class="bn" aria-label="Швидка навігація">
+<a href="#top"><span class="ic">🏠</span>Головна</a>
+<a href="#menu"><span class="ic">🍕</span>Меню</a>
+<a href="tel:+380660203777"><span class="ic">📞</span>Дзвінок</a>
+<button id="cartb2" class="main" aria-label="Відкрити кошик"><span class="ic">🛒<span class="cnt" data-cnt>0</span></span>Кошик</button>
+</nav>
+
+<dialog id="dlg"><div class="dc" id="dbody"></div></dialog>
+<dialog id="ck"><div class="dc" id="ckb"></div></dialog>
+<div id="ov"></div>
+<aside id="drawer" aria-label="Кошик" aria-hidden="true"><div class="dh"><h3 style="font-size:20px">Кошик</h3><button class="btn o" id="cx" aria-label="Закрити кошик">✕</button></div>
+<div id="items"></div><div class="df" id="foot"></div></aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===== ДАНІ (з chilipizza.uz.ua та ChoiceQR) ===== */
+const a=(c,n,d,p,w,k,o)=>Object.assign({c,n,d,p,w:w||"",k:k||0},o),PZ={pz:1,from:1},H={hot:"Гостре"};
+let D=[
+a("Сніданки","Авокадо Мелт зі Скрамблом","Тост із темного хліба з сиром чедер усередині, мус з фети, авокадо, скрамбл, сир пармезан, мікс салатів, зелена цибуля, базиліковий соус.",255,"300г",0),
+a("Сніданки","Боул з Тунцем","Тунець, соус мексиканський, авокадо, чука, горіховий соус, кукурудза, стручкова квасоля, кус-кус, в'ялені томати, яйця, шпинат, томати чері, сир пармезан.",315,"400г",17),
+a("Сніданки","Фітнес Сніданок","Яйце куряче, томати чері, авокадо, крем-чіз, тости з темного хліба, шпинат, рукола, базиліковий соус, салатна заправка, сир пармезан. На вибір: креветка, лосось або куряче філе су-від.",261,"330/350г",17,{from:1,nw:1}),
+a("Fitness Pizza","Fitness Pizza Цезарь 30 см","Томатний соус, сир моцарела, бекон, філе су-від, томати чері, айсберг, шпинат, соус цезарь, сир пармезан.",215,"330г",11),
+a("Fitness Pizza","Fitness Pizza Формаджо 30 см","Томатний соус, сир моцарела, сир голландський, сир дор блю, шпинат, мус з фети, сир пармезан.",209,"330г",11),
+a("Yankee Pizza 30 см","Lil Yankee Pizza Ham&Mascarpone 30 cm","Сир моцарела, томатний соус, маслини, шинка, сир маскарпоне, печериці, сир пармезан, зелена цибуля.",229,"",0),
+a("Yankee Pizza 30 см","Lil Yankee Pizza Veal&Pepper 30 cm","Томатний соус, сир моцарела, яловича вирізка, цибуля, печериці, соус перцевий деміглас, зелена цибуля.",299,"",0,{hot:"Середньо-гострий"}),
+a("Піца","Мисливська","Томатний соус, сир моцарела, буженина, бекон, мисливські ковбаски, болгарський перець.",183,"",0,PZ),
+a("Піца","Гавайська","Томатний соус, сир моцарела, ковбаса, шинка, ананаси, томати, кукурудза.",183,"",0,PZ),
+a("Піца","Піца Селянська","Томатно-вершковий соус, сир моцарела, домашня ковбаса, салямі, філе куряче, цибуля червона, цибуля зелена.",237,"",0,PZ),
+a("Піца","Салямі","Томатний соус, сир моцарела, салямі.",169,"",0,PZ),
+a("Піца","Формаджо","Вершковий соус, сир моцарела, сир емменталь, сир пармезан, сир філадельфія, сир дор блю.",267,"",0,PZ),
+a("Піца","Сомбреро","Томатний соус, сир моцарела, буженина, бекон, томати, болгарський перець, оливки, печериці, орегано.",209,"",0,PZ),
+a("Піца","Б'янка","Вершковий соус, сир моцарела, рукола.",159,"",0,PZ),
+a("Піца на компанію","Палермо 🌶️","Томатний соус, сир моцарела, домашня ковбаса, салямі, ковбаса, цибуля зелена, чилі перець.",577,"",17,H),
+a("Салати","Грецький","Огірок, томати черрі, перець болгарський, оливки, червона цибуля, оливкова олія, сухий базилік.",155,"250г",15),
+a("Салати","Цезарь","Соус цезарь, мікс салатів, крутони, яйце перепелине, томати, сир пармезан.",205,"280г",15,{from:1}),
+a("Салати","Нісуаз","Айсберг, шпинат, в'ялені томати, огірки пікулі, огірки свіжі, яйце куряче, молода картопля, трюфельна паста, соус нісуаз, сир пармезан.",303,"350г",15,{from:1}),
+a("Салати","Капустний салат","Капуста, морква, кріп, мікс салатів, зелена цибуля, салатна заправка.",125,"200г",15),
+a("Супи","Борщ","",99,"300мл",15),
+a("Супи","Бограч 🌶️","",123,"300мл",15,H),
+a("Супи","Журек","Два види ковбасок, картопля, морква, яйця, бекон, закваска з житнього борошна та часнику.",145,"450г"),
+a("Супи","Бульйон","",87,"300мл",15),
+a("Лаваші","Лаваш з індичкою","Лаваш, індичка, кукурудза, кримська цибуля, сир моцарела, вершки, сирно-сметанний соус.",157,"240г",15),
+a("Лаваші","Лаваш з курячим філе і томатами","Лаваш, куряче філе, томати, сир моцарела, сирно-сметанний соус.",147,"260г",15),
+a("Закуски Гарячі","Курячі Нагетси з соусом BBQ","Куряче філе в паніровці з сухарів панко, мигдалю, кунжуту, арахісу та соус барбекю.",177,"180/50г",15),
+a("Закуски Гарячі","Крила фрі 🌶️","Крила курячі, кисло-солодкий соус, фокача.",261,"400г",15,H),
+a("Закуски Гарячі","Хрусткий Брі з Малиновим соусом","Сир брі в паніровці з сухарів панко, мигдалю, кунжуту, арахісу та малиновий соус.",273,"200/50г",15),
+a("Закуски Холодні","Тар-тар з лосося","Лосось, цибуля червона, в'ялені томати, креветковий соус, крем-чіз, гуакамоле з авокадо, лайм, тости, чилі перець.",367,"220/100г",15),
+a("Закуски Холодні","Брускета з прошуто та вишнею","Багет, крем-чіз, вишневий соус, прошуто, сир пармезан, мікрогрін.",261,"250г",17),
+a("Сковорідка","Сковорідка по-домашньому","Картопля, бекон, цибуля, сир моцарела, яйце, вершки.",147,"250г",15),
+a("Сковорідка","Сковорідка з фермерськими ковбасками 🌶️","Домашня ковбаса, картопля, цибуля, вершки, сир моцарела, ерош пішта, зелень.",153,"250г",15,H),
+a("Паста","Паста карбонара","Спагетті, бекон, сир пармезан, вершки, жовток.",157,"300г",15),
+a("Паста","Паста з креветками","Паста, креветки, цибуля, часник, томати черрі, вершки, сир пармезан, петрушка.",255,"300г",15),
+a("Страви з Азії","Рамен 🌶️","Локшина, соус кімчі, соус шрірача, мариноване яйце, кунжут, зелена цибуля, морква, перець болгарський, гриби шиїтаке, кукурудза.",205,"500г",15,{hot:"Гостре",from:1}),
+a("Страви з Азії","Курка у кисло-солодкому соусі","Куряче філе, ананас, спеції, болгарський перець, зелена цибуля, кисло-солодкий соус, кунжут, рис.",235,"400г"),
+a("М'ясні страви","Шніцель з Вершковим Песто та Пюре","Курячий шніцель, салат з молодої капусти, картопляне пюре, соус вершковий песто, зелень.",261,"400г",17),
+a("М'ясні страви","Кнедлик з яловичою щокою","Кнедлик, печериці, цибуля, м'ясний соус, томлені яловичі щоки, зелена цибуля, пармезан, чаламада.",289,"400г"),
+a("Рибні Страви","Форель по-карпатськи","Ціна за 100 г.",157,"100г",17),
+a("Рибні Страви","Стейк лосося з бататом та вершковим песто","Лосось, вершковий песто, батат, часник, спеції, томати черрі, рукола, сир пармезан.",429,"280г",17,{nw:1}),
+a("Стейки","Стейк з Курячого філе","Куряче філе, шпинат, рукола, чилі перець, часникова олія, копчене масло. Ціна за 100 г готового м'яса, мінімальний вихід стейку 150/200 г.",101,"100г",17),
+a("Бургери","Бургер з хрустким стегном","Булочка бріош, хрустке куряче стегно в сухариках панко, томати, соус цезарь, сир чедер, айсберг.",279,"320г",11),
+a("Бургери","Чізбургер з яловичою котлетою 🌶️","Булочка бріош, котлета з яловичини, бекон, халапеньйо, пряний соус барбекю, айсберг, латук, помідор, карамелізована цибуля, майонез, сир чедер, американська гірчиця. Подається зі смаженою картоплею з часником та кропом.",315,"",17,H),
+a("Гарніри","Картопля Фрі","",115,"200г",15),
+a("Гарніри","Овочі Гриль","Кукурудза, кабачок, баклажан, печериці, перець болгарський, спеції, олія, соєвий соус, часник, медово-гірчичний соус, рукола.",135,"300г",15),
+a("Роли","Філадельфія","Лосось, огірок, сир філадельфія.",261,"220г",15),
+a("Роли","Золотий дракон","Вугор, сир філадельфія, огірок, кунжут, соус унагі.",261,"220г",15),
+a("Роли","Нідзі","Ікра масаго, огірок, авокадо, креветка, лосось, сир філадельфія.",241,"230г",15),
+a("Сети","Сет «Сікоку»","Нідзі, Ебі Фудзі, Золотий Дракон, Філадельфія.",949,"1030г",17),
+a("Десерти","Наполеон","",115,"150г",15),
+a("Десерти","Бите Скло","Желе з грецького йогурту та ванілі, три види фруктових желе, хрустке печиво орео.",119,"200г"),
+a("Десерти","Вишнева Хатинка","Трубочка з вишневим джемом, крем зі сметани, шоколадний соус, мигдальні пластівці.",169,"185г"),
+a("Лимонади","Coca-Cola 0.5","",69),
+a("Лимонади","Спрайт 0.5","",69),
+a("Пиво","Lager11 Світле Фільтроване","Збалансований, легкий, освіжаючий світлий чеський лагер із вираженим солодовим і хмелевим характером, тривалим післясмаком та помірною гіркотою.",85,"330мл")
+];
+D.forEach((x,i)=>x.id=i);
+const HITS=["Палермо 🌶️","Мисливська","Філадельфія","Паста карбонара","Сет «Сікоку»","Бургер з хрустким стегном","Вишнева Хатинка"];
+/* ресторани: години [нд,пн,вт,ср,чт,пт,сб] */
+const R=[
+ {a:"вул. Собранецька 89, ТЦ «Дастор», 2-й поверх",t:"(095) 643-46-00",hs:"нд–пт 10:00–22:00, сб 11:00–22:00",h:[[10,22],[10,22],[10,22],[10,22],[10,22],[10,22],[11,22]]},
+ {a:"пл. Корятовича 21а, ТЦ «Люксор», 2-й поверх",t:"(095) 609-40-11",hs:"нд–пт 9:00–23:00, сб 12:00–23:00",h:[[9,23],[9,23],[9,23],[9,23],[9,23],[9,23],[12,23]]},
+ {a:"вул. Бестужева 9, ТЦ «Вопак»",t:"(099) 518-71-37",hs:"пн–пт, нд 12:00–23:00 (субота — уточнюйте телефоном)",h:[[12,23],[12,23],[12,23],[12,23],[12,23],[12,23],null]}
+];
+const PHONE="+380660203777",CQ="https://chilipizza.choiceqr.com/uk",FREE=500;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>n.toLocaleString("uk-UA")+" ₴";
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const isPizza=x=>/Піц|Pizza|Yankee/.test(x.c);
+
+/* ===== ілюстрації страв (SVG) ===== */
+const W=s=>`<svg viewBox="0 0 120 120" aria-hidden="true">${s}</svg>`;
+const plate='<ellipse cx=60 cy=64 rx=54 ry=40 fill=#f5eddf /><ellipse cx=60 cy=64 rx=42 ry=30 fill=#e9dfcf />',bowl='<ellipse cx=60 cy=100 rx=40 ry=7 fill=#0005 /><path d="M10 50h100a50 48 0 0 1-100 0z" fill=#f5eddf />',dots=(a,r)=>a.map(p=>`<circle cx=${p[0]} cy=${p[1]} r=${r} fill=${p[2]} />`).join("");
+const ART={
+pizza:()=>'<circle cx=60 cy=60 r=56 fill=#d8963f /><circle cx=60 cy=60 r=48 fill=#c8281c /><circle cx=60 cy=60 r=45 fill=#f4c94c />'+[[45,40],[72,44],[56,66],[80,70],[38,72],[62,28],[48,90]].map(p=>`<circle cx=${p[0]} cy=${p[1]} r=8 fill=#b3261a /><circle cx=${p[0]} cy=${p[1]} r=3 fill=#d4503e />`).join("")+'<ellipse cx=84 cy=52 rx=6 ry=2 fill=#2f8a3a /><ellipse cx=34 cy=56 rx=6 ry=2 fill=#2f8a3a transform="rotate(30 34 56)"/>',
+burger:()=>'<ellipse cx=60 cy=40 rx=44 ry=22 fill=#d98b3a /><rect x=16 y=56 width=88 height=10 rx=5 fill=#4cab4c /><rect x=14 y=66 width=92 height=14 rx=7 fill=#5a2a14 /><rect x=18 y=80 width=84 height=8 rx=4 fill=#f4c94c /><path d="M16 92h88v4q0 10-12 10H28q-12 0-12-10z" fill=#d98b3a />'+dots([[44,32,"#f5eddf"],[62,28,"#f5eddf"],[76,36,"#f5eddf"]],2),
+roll:()=>[28,60,92].map((c,i)=>{const y=i%2?72:50;return`<circle cx=${c} cy=${y} r=20 fill=#1b1f1c /><circle cx=${c} cy=${y} r=16 fill=#f7f3ea /><circle cx=${c} cy=${y} r=7 fill=${i==1?"#f07a3c":"#e8a33a"} />`}).join(""),
+drink:()=>'<rect x=40 y=22 width=40 height=86 rx=10 fill=#8c1a12 /><rect x=40 y=50 width=40 height=30 fill=#f5eddf /><rect x=50 y=8 width=20 height=18 rx=4 fill=#8c1a12 /><rect x=48 y=4 width=24 height=6 rx=3 fill=#e3b868 />',
+cake:()=>'<rect x=20 y=70 width=80 height=24 rx=6 fill=#6b3a1f /><rect x=20 y=52 width=80 height=18 rx=6 fill=#f5eddf /><rect x=20 y=34 width=80 height=18 rx=6 fill=#6b3a1f /><circle cx=60 cy=26 r=9 fill=#b3081a />',
+"Сніданки":()=>plate+'<ellipse cx=46 cy=62 rx=17 ry=13 fill=#fff /><circle cx=46 cy=62 r=7 fill=#f2a516 /><ellipse cx=78 cy=70 rx=15 ry=11 fill=#fff /><circle cx=78 cy=70 r=6 fill=#f2a516 /><path d="M30 82q10-14 24-4q-10 12-24 4z" fill=#6aa84f /><circle cx=88 cy=48 r=6 fill=#d4261c />',
+"Салати":()=>bowl+'<ellipse cx=60 cy=50 rx=50 ry=10 fill=#4cab4c />'+dots([[30,46,"#7bc65a"],[48,40,"#4cab4c"],[66,38,"#7bc65a"],[84,44,"#4cab4c"],[56,48,"#d4261c"],[74,50,"#e3b868"]],11),
+"Супи":()=>bowl+'<ellipse cx=60 cy=52 rx=46 ry=9 fill=#e8892b /><path d="M44 38q-6-10 0-20M60 36q-6-10 0-20M76 38q-6-10 0-20" stroke=#fff9 stroke-width=3 fill=none stroke-linecap=round />',
+"Лаваші":()=>'<ellipse cx=60 cy=100 rx=44 ry=7 fill=#0005 /><g transform="rotate(-20 60 60)"><rect x=14 y=42 width=92 height=38 rx=19 fill=#e8c98a /><rect x=70 y=46 width=36 height=30 rx=15 fill=#4cab4c /><circle cx=90 cy=61 r=9 fill=#d4261c /></g>',
+"Закуски Гарячі":()=>plate+'<rect x=26 y=44 width=26 height=20 rx=8 fill=#d9902f /><rect x=56 y=40 width=26 height=20 rx=8 fill=#e5a23c /><rect x=40 y=64 width=28 height=20 rx=8 fill=#d9902f /><rect x=72 y=62 width=24 height=18 rx=8 fill=#e5a23c /><circle cx=94 cy=44 r=7 fill=#c8180f />',
+"Закуски Холодні":()=>plate+'<rect x=22 y=48 width=40 height=24 rx=6 fill=#d9a65a /><rect x=62 y=54 width=38 height=24 rx=6 fill=#d9a65a /><rect x=26 y=44 width=32 height=10 rx=5 fill=#f08a6a /><rect x=66 y=50 width=30 height=10 rx=5 fill=#a3223c /><circle cx=44 cy=44 r=3 fill=#4cab4c />',
+"Сковорідка":()=>'<circle cx=52 cy=62 r=44 fill=#2a2a2c /><circle cx=52 cy=62 r=37 fill=#f2d38a /><ellipse cx=40 cy=54 rx=16 ry=6 fill=#8a4b25 /><ellipse cx=62 cy=72 rx=16 ry=6 fill=#8a4b25 />'+dots([[60,48,"#4cab4c"],[36,74,"#fff"]],5)+'<rect x=92 y=57 width=26 height=10 rx=5 fill=#2a2a2c />',
+"Паста":()=>bowl+'<path d="M22 52q19-16 38 0t38 0" stroke=#f2c14e stroke-width=8 fill=none stroke-linecap=round /><path d="M26 62q17-14 34 0t34 0" stroke=#e8b43a stroke-width=8 fill=none stroke-linecap=round />'+dots([[44,46,"#d4261c"],[72,46,"#2f8a3a"]],5),
+"Страви з Азії":()=>ART["Паста"]()+'<ellipse cx=84 cy=44 rx=8 ry=6 fill=#fff /><circle cx=84 cy=44 r=3.5 fill=#f2a516 />',
+"М'ясні страви":()=>plate+'<ellipse cx=58 cy=62 rx=30 ry=20 fill=#7a3b1d /><path d="M38 54l28 16M48 50l28 16" stroke=#4a2410 stroke-width=3 />'+dots([[92,52,"#4cab4c"],[30,82,"#e3b868"]],6),
+"Рибні Страви":()=>plate+'<ellipse cx=56 cy=62 rx=32 ry=15 fill=#f08a6a /><path d="M86 62l18-14v28z" fill=#f08a6a /><circle cx=36 cy=58 r=3 fill=#222 /><circle cx=88 cy=84 r=9 fill=#f4d03f />',
+"Гарніри":()=>'<ellipse cx=60 cy=108 rx=34 ry=6 fill=#0005 />'+[[34,22,-12],[46,14,-4],[58,12,2],[70,16,8],[82,24,14]].map(p=>`<rect x=${p[0]} y=${p[1]} width=9 height=60 rx=2 fill=#f4c94c transform="rotate(${p[2]} ${p[0]} 80)" />`).join("")+'<path d="M30 62h60l-6 46H36z" fill=#c8180f />',
+"Пиво":()=>'<rect x=28 y=34 width=54 height=70 rx=8 fill=#e8a317 /><path d="M82 48h12q12 0 12 16v8q0 16-12 16H82" stroke=#e8a317 stroke-width=8 fill=none /><ellipse cx=55 cy=34 rx=30 ry=12 fill=#fff6e0 />'};
+ART["Стейки"]=ART["М'ясні страви"];
+const kind=x=>isPizza(x)?"pizza":/Бургер/.test(x.c)?"burger":/Роли|Сети/.test(x.c)?"roll":/Лимонад|Пиво/.test(x.c)?"drink":/Десерт/.test(x.c)?"cake":"bowl";
+function art(x){const f=ART[x.c];if(f)return W(f());const k=kind(x);return W((ART[k]||ART["Салати"])())}
+
+/* ===== кошик ===== */
+let cart=[];
+try{cart=(JSON.parse(localStorage.getItem("chili-cart-v2")||"[]")||[]).filter(c=>D.some(x=>x.n===c.n&&c.q>0))}catch(e){cart=[]}
+const save=()=>{try{localStorage.setItem("chili-cart-v2",JSON.stringify(cart))}catch(e){}};
+const byN=n=>D.find(x=>x.n===n);
+function addToCart(x,q=1,src){const l=cart.find(c=>c.n===x.n);l?l.q+=q:cart.push({n:x.n,q});save();render();
+ $$("[data-cnt]").forEach(e=>{e.classList.remove("bump");void e.offsetWidth;e.classList.add("bump")});
+ fly(src);toast(`«${x.n}» додано · ${q} шт.`);chef.say&&chef.say(isPizza(x)?"Піцу вже кладу в піч! 🔥":"Чудовий вибір! Вже несу в кошик.")}
+function totals(){const sub=cart.reduce((s,c)=>s+byN(c.n).p*c.q,0),pk=cart.reduce((s,c)=>s+byN(c.n).k*c.q,0);return{sub,pk,t:sub+pk,n:cart.reduce((s,c)=>s+c.q,0),pz:cart.some(c=>isPizza(byN(c.n)))}}
+function render(){
+ const T=totals();$$("[data-cnt]").forEach(e=>e.textContent=T.n);
+ $("#items").innerHTML=cart.length?cart.map(c=>{const x=byN(c.n);return`<div class="li"><div class="th">${art(x)}</div><div><b>${x.n}</b><br><small>${x.from?"від ":""}${fmt(x.p)}${x.k?` + упак. ${x.k} ₴`:""}</small></div><span class="q"><button data-d="-1" data-n="${esc(c.n)}" aria-label="Менше">−</button><b>${c.q}</b><button data-d="1" data-n="${esc(c.n)}" aria-label="Більше">+</button></span></div>`}).join(""):'<div class="empty" style="color:#6b655c"><div style="font-size:54px">🍕</div><p>Кошик порожній.<br>Додайте щось смачне з меню.</p><a class="btn" href="#menu" data-close>До меню</a></div>';
+ const left=Math.max(0,FREE-T.sub);
+ $("#foot").innerHTML=cart.length?`<div class="row"><span>Страви</span><span>${fmt(T.sub)}</span></div><div class="row"><span>Пакування</span><span>${fmt(T.pk)}${T.pz?" + піца*":""}</span></div><div class="row" style="font-size:18px"><b>Разом</b><b>${fmt(T.t)}</b></div>
+ <div class="bar"><i style="width:${Math.min(100,T.sub/FREE*100)}%"></i></div><small>${left?`До безкоштовної доставки в межах міста — ${fmt(left)}`:"🎉 Доставка в межах міста безкоштовна"}</small>
+ ${T.pz?'<p class="note">* Пакування піци 11 / 13 / 17 ₴ залежно від розміру — додасть оператор.</p>':""}
+ <button class="btn" style="width:100%;margin-top:12px" id="checkout">Оформити замовлення</button>
+ <div style="text-align:center"><button class="clr" id="clr">Очистити кошик</button></div>`:""}
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+$("#items").onclick=e=>{if(e.target.closest("[data-close]")){closeCart();return}const b=e.target.closest("button[data-d]");if(!b)return;const l=cart.find(c=>c.n===b.dataset.n);if(!l)return;l.q+=+b.dataset.d;cart=cart.filter(c=>c.q>0);save();render();
+ chef.say&&chef.say(b.dataset.d==="-1"?"Менше? Гаразд, ти керуєш.":"Ще порцію? Люблю такий апетит!")};
+$("#foot").onclick=e=>{if(e.target.id==="checkout")openCheckout();if(e.target.id==="clr"&&confirm("Очистити кошик?")){cart=[];save();render()}};
+const openCart=()=>{closeNav();$("#drawer").classList.add("on");$("#drawer").setAttribute("aria-hidden","false");$("#ov").classList.add("on");document.body.classList.add("lock");setTimeout(()=>$("#cx").focus(),50)},
+ closeCart=()=>{$("#drawer").classList.remove("on");$("#drawer").setAttribute("aria-hidden","true");$("#ov").classList.remove("on");document.body.classList.remove("lock")};
+$("#cartb").onclick=$("#cartb2").onclick=openCart;$("#cx").onclick=$("#ov").onclick=closeCart;
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeCart();closeNav()}});
+
+/* ===== оформлення ===== */
+function openCheckout(){
+ const T=totals(),ro=R.map((r,i)=>`<option value="${i}">${r.a}</option>`).join("");
+ let saved={};try{saved=JSON.parse(localStorage.getItem("chili-user")||"{}")}catch(e){}
+ $("#ckb").innerHTML=`<button class="dx" data-x aria-label="Закрити">✕</button><h2 style="font-size:24px;margin:4px 40px 14px 0">Оформлення</h2>
+ <form id="ckf" novalidate>
+ <div class="seg" role="radiogroup" aria-label="Спосіб отримання"><label><input type="radio" name="m" value="d" checked>🚚 Доставка</label><label><input type="radio" name="m" value="p">🏃 Самовивіз</label></div>
+ <label>Ваше ім'я<input name="name" required autocomplete="name" placeholder="Олена" value="${esc(saved.name||"")}"></label>
+ <label>Телефон<input name="tel" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" value="${esc(saved.tel||"")}"></label>
+ <label id="adrL">Адреса доставки<input name="adr" autocomplete="street-address" placeholder="Вулиця, будинок, квартира" value="${esc(saved.adr||"")}"></label>
+ <label id="rsL" hidden>Ресторан<select name="rs">${ro}</select></label>
+ <label>Оплата<select name="pay"><option>Готівкою кур'єру</option><option>Карткою при отриманні</option></select></label>
+ <label>Коментар<textarea name="cm" rows="2" placeholder="Підʼїзд, решта з купюри, побажання…"></textarea></label>
+ <div class="row" style="font-size:18px"><b>До сплати</b><b>${fmt(T.t)}</b></div>
+ <p class="err" id="ckerr" role="alert"></p>
+ <button class="btn" type="submit">Підтвердити</button></form>`;
+ const f=$("#ckf"),sync=()=>{const p=f.m.value==="p";$("#adrL").hidden=p;$("#rsL").hidden=!p;f.adr.required=!p};
+ f.addEventListener("change",sync);sync();
+ f.onsubmit=e=>{e.preventDefault();const tel=f.tel.value.replace(/\D/g,"");
+  const er=!f.name.value.trim()?"Вкажіть ім'я":tel.length<10?"Перевірте номер телефону":f.m.value==="d"&&!f.adr.value.trim()?"Вкажіть адресу доставки":"";
+  if(er){$("#ckerr").textContent=er;chef.say&&chef.say("Ой, "+er.toLowerCase()+" — і я все передам!");return}
+  try{localStorage.setItem("chili-user",JSON.stringify({name:f.name.value,tel:f.tel.value,adr:f.adr.value}))}catch(e){}
+  done(f)};
+ $("#ck").showModal();
+}
+function done(f){const T=totals(),lines=cart.map((c,i)=>{const x=byN(c.n);return`${i+1}. ${x.n} × ${c.q} — ${x.from?"від ":""}${fmt(x.p*c.q)}`});
+ const txt=`Замовлення Chili Pizza\n${lines.join("\n")}\n\nСтрави: ${fmt(T.sub)}\nПакування: ${fmt(T.pk)}${T.pz?" + пакування піци":""}\nРазом: ${fmt(T.t)}\n\n${f.m.value==="d"?"Доставка: "+f.adr.value.trim():"Самовивіз: "+R[f.rs.value].a}\nІм'я: ${f.name.value.trim()}\nТелефон: ${f.tel.value.trim()}\nОплата: ${f.pay.value}${f.cm.value.trim()?"\nКоментар: "+f.cm.value.trim():""}`;
+ const tel=f.m.value==="p"?"+380"+R[f.rs.value].t.replace(/\D/g,"").slice(1):PHONE;
+ $("#ckb").innerHTML=`<button class="dx" data-x aria-label="Закрити">✕</button><div style="font-size:54px;text-align:center">🎉</div><h2 style="font-size:22px;text-align:center;margin-bottom:8px">Замовлення готове!</h2>
+ <p style="text-align:center;opacity:.85;margin-top:0">Залишився один крок: передайте його ресторану — зателефонуйте або скопіюйте текст і оформіть у ChoiceQR.</p>
+ <pre id="otx"></pre><div class="dact" style="display:grid;gap:10px"><a class="btn" href="tel:${tel}">📞 Зателефонувати й продиктувати</a><button class="btn g" id="cpy">📋 Скопіювати замовлення</button><a class="btn o" href="${CQ}" target="_blank" rel="noopener">Оформити в ChoiceQR</a><button class="clr" style="color:#fffb" id="fin">Готово — очистити кошик</button></div>`;
+ $("#otx").textContent=txt;
+ $("#cpy").onclick=async()=>{try{await navigator.clipboard.writeText(txt);toast("Скопійовано ✓")}catch(e){const r=document.createRange();r.selectNodeContents($("#otx"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Виділено — скопіюйте вручну")}};
+ $("#fin").onclick=()=>{cart=[];save();render();$("#ck").close();closeCart();chef.say&&chef.say("Смачного! Чекаємо знову 🍕")};
+ chef.say&&chef.say("Все записав! Тепер один дзвінок — і вже готуємо.")}
+$("#ck").addEventListener("click",e=>{if(e.target.id==="ck"||e.target.closest("[data-x]"))$("#ck").close()});
+
+/* ===== меню ===== */
+let cat="Усі";
+const cats=["Усі",...new Set(D.map(x=>x.c))];
+$("#chips").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c==="Усі"}" data-c="${esc(c)}">${c}<small>${c==="Усі"?D.length:D.filter(x=>x.c===c).length}</small></button>`).join("");
+$("#msub").textContent=`${D.length} страв у ${cats.length-1} категоріях. Ціни в гривнях. Торкніться страви, щоб переглянути її в 3D.`;
+const cw=document.createElement("div");cw.id="cw";cw.setAttribute("aria-hidden","true");$("#menu").prepend(cw);
+$("#chips").onclick=e=>{const b=e.target.closest(".chip");if(!b)return;cat=b.dataset.c;$$(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));
+ b.scrollIntoView({inline:"center",block:"nearest",behavior:RM?"auto":"smooth"});
+ const i=cats.indexOf(cat);document.documentElement.style.setProperty("--ch",[8,150,36,172,24,200,340][i%7]);cw.textContent=cat==="Усі"?"MENU":cat;cw.classList.remove("on");void cw.offsetWidth;cw.classList.add("on");
+ draw();const top=$("#list").getBoundingClientRect().top+scrollY-(innerWidth<760?120:140);if(scrollY>top)scrollTo({top,behavior:RM?"auto":"smooth"});
+ chef.say&&chef.say(catPhrase(cat))};
+let qt;$("#q").oninput=()=>{clearTimeout(qt);qt=setTimeout(draw,120)};$("#sort").onchange=()=>{draw();chef.say&&chef.say("Порядок наведено!")};
+const card=(x,i,big)=>`<div class="card${big?" big":""}" style="--i:${i}" data-i="${x.id}" role="button" tabindex="0" aria-label="${esc(x.n)}, ${x.from?"від ":""}${x.p} гривень"><div class="ph">${art(x)}</div><div class="cb"><h3>${x.n}${x.nw?'<span class="tag">Новинка</span>':""}${x.hot?`<span class="tag hot">${x.hot}</span>`:""}</h3>${x.d?`<p>${x.d}</p>`:""}<div class="pr"><span class="p">${x.from?"від ":""}${fmt(x.p)}</span><span class="w">${x.w}</span><button class="add" data-add="${x.id}" aria-label="Додати ${esc(x.n)} в кошик">+</button></div></div></div>`;
+function draw(){
+ const q=$("#q").value.trim().toLowerCase(),s=$("#sort").value;
+ let L=D.filter(x=>(cat==="Усі"||x.c===cat)&&(!q||(x.n+" "+x.d+" "+x.c).toLowerCase().includes(q)));
+ if(s==="a"||s==="d")L=[...L].sort((a,b)=>s==="a"?a.p-b.p:b.p-a.p);
+ if(s==="h")L=[...L].sort((a,b)=>!!b.hot-!!a.hot);
+ if(!L.length){$("#list").innerHTML=`<div class="empty"><div style="font-size:48px">🤔</div><p>Нічого не знайдено за «${esc(q)}».</p><button class="btn o" id="rst">Скинути пошук</button></div>`;$("#rst").onclick=()=>{$("#q").value="";cat="Усі";$$(".chip").forEach((x,i)=>x.setAttribute("aria-pressed",!i));draw()};return}
+ const g=s?[["",L]]:[...new Set(L.map(x=>x.c))].map(c=>[c,L.filter(x=>x.c===c)]);
+ $("#list").innerHTML=g.map(([c,a])=>(c?`<h3 class="cat-h">${c}<small>${a.length}</small></h3>`:"")+`<div class="grid">`+a.map((x,i)=>card(x,i,!i&&!q&&a.length>2)).join("")+`</div>`).join("")}
+$("#list").onclick=e=>{const ad=e.target.closest("[data-add]");if(ad){e.stopPropagation();const x=D[+ad.dataset.add];addToCart(x,1,ad);ad.classList.add("ok");ad.textContent="✓";setTimeout(()=>{ad.classList.remove("ok");ad.textContent="+"},1200);return}
+ const b=e.target.closest(".card");if(b)openItem(+b.dataset.i)};
+$("#list").onkeydown=e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("card")){e.preventDefault();openItem(+e.target.dataset.i)}};
+$("#list").addEventListener("pointermove",e=>{const c=e.target.closest(".card");if(!c||e.pointerType!=="mouse"||RM)return;const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`perspective(700px) rotateY(${x*9}deg) rotateX(${-y*9}deg) translateY(-4px)`});
+$("#list").addEventListener("pointerout",e=>{const c=e.target.closest(".card");if(c&&!c.contains(e.relatedTarget))c.style.transform=""});
+$("#hitl").innerHTML=HITS.map(byN).filter(Boolean).map(x=>`<button class="hit" data-i="${x.id}"><div class="ph">${art(x)}</div><b>${x.n}</b><span>${x.from?"від ":""}${fmt(x.p)}</span></button>`).join("");
+$("#hitl").onclick=e=>{const b=e.target.closest(".hit");if(b)openItem(+b.dataset.i)};
+
+/* ===== картка страви ===== */
+let qty=1;
+function openItem(i){const x=D[i];qty=1;
+ $("#dbody").innerHTML=`<button class="dx" data-x aria-label="Закрити">✕</button><div class="v3" id="v3" aria-label="3D-модель страви, обертайте пальцем" role="img"></div><p class="v3h">↔ покрутіть модель</p>
+ <p style="margin:0 0 4px;font-size:13px;opacity:.6">${x.c}</p><h2 style="font-size:22px">${x.n}${x.nw?'<span class="tag">Новинка</span>':""}${x.hot?`<span class="tag hot">${x.hot}</span>`:""}</h2>
+ <p>${x.d||"Класика від кухарів Chili."}</p><p style="font-size:20px"><b style="color:var(--gold)">${x.from?"від ":""}${fmt(x.p)}</b> <span style="opacity:.6;font-size:15px">${x.w?"· "+x.w:""}</span></p>
+ <p class="note">${x.k?`Пакування +${x.k} ₴ додається автоматично.`:isPizza(x)?"Пакування піци (11 / 13 / 17 ₴) залежить від розміру.":"Без додаткового пакування."} ${x.from?"Ціна за базовий варіант — розмір/вибір підтвердить оператор.":""}</p>
+ <div class="dact"><span class="q"><button id="mn" aria-label="Менше">−</button><b id="qv">1</b><button id="pl" aria-label="Більше">+</button></span><button class="btn" id="add">Додати · <span id="qs">${fmt(x.p)}</span></button>${x.from?`<a class="btn o sm" href="${CQ}" target="_blank" rel="noopener">Розміри в ChoiceQR</a>`:""}</div>`;
+ $("#dlg").showModal();try{v3(x)}catch(e){}
+ const up=()=>{$("#qv").textContent=qty;$("#qs").textContent=fmt(x.p*qty)};
+ $("#mn").onclick=()=>{qty=Math.max(1,qty-1);up();chef.say("Обережно, не залишайся голодним.")};$("#pl").onclick=()=>{qty++;up();chef.say("Подвійна порція — подвійне щастя!")};
+ $("#add").onclick=()=>{addToCart(x,qty,$("#add"));$("#dlg").close()};
+ chef.say("Гарний вибір! Покрути страву пальцем.")}
+$("#dlg").addEventListener("click",e=>{if(e.target.id==="dlg"||e.target.closest("[data-x]"))$("#dlg").close()});
+
+/* ===== ресторани ===== */
+function kyivNow(){try{const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Kyiv",weekday:"short",hour:"numeric",minute:"numeric",hourCycle:"h23"}).formatToParts(new Date()),g=t=>p.find(x=>x.type===t).value;return{d:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(g("weekday")),h:+g("hour")+ +g("minute")/60}}catch(e){const n=new Date();return{d:n.getDay(),h:n.getHours()+n.getMinutes()/60}}}
+function status(r){const n=kyivNow(),h=r.h[n.d];if(!h)return["unk","Сьогодні — уточнюйте"];return n.h>=h[0]&&n.h<h[1]?["","Відчинено до "+h[1]+":00"]:["off",n.h<h[0]?"Відкриється о "+h[0]+":00":"Зачинено"]}
+let curR=0;
+function drawR(){$("#rest").innerHTML=R.map((r,i)=>{const[c,t]=status(r);return`<div class="rc" role="button" tabindex="0" aria-pressed="${i===curR}" data-r="${i}"><span class="st ${c}">● ${t}</span><h3>${r.a}</h3><p>🕐 ${r.hs}</p><p>📞 <a href="tel:+380${r.t.replace(/\D/g,"").slice(1)}">${r.t}</a></p><div class="ra"><a class="btn sm" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent("Ужгород, "+r.a.replace(/,.*?ТЦ/," ТЦ"))}" target="_blank" rel="noopener">Маршрут</a><a class="btn o sm" href="tel:+380${r.t.replace(/\D/g,"").slice(1)}">Подзвонити</a></div></div>`}).join("")}
+function showMap(i){curR=i;$$(".rc").forEach(e=>e.setAttribute("aria-pressed",+e.dataset.r===i));const r=R[i],q=encodeURIComponent("Chili Pizza, "+r.a.split(",")[0]+", Ужгород");
+ $("#map").innerHTML=`<iframe title="Мапа: ${esc(r.a)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${q}&z=16&output=embed"></iframe>`}
+$("#rest").onclick=e=>{if(e.target.closest("a"))return;const c=e.target.closest(".rc");if(c){showMap(+c.dataset.r);chef.say("Чекаємо в гості! Столик знайдеться.")}};
+$("#rest").onkeydown=e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("rc")){e.preventDefault();showMap(+e.target.dataset.r)}};
+drawR();setInterval(drawR,60000);
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){showMap(curR);o.disconnect()}},{rootMargin:"300px"}).observe($("#map"));
+(function(){const n=kyivNow(),open=n.h>=10&&n.h<22.5;$("#liveDot").classList.toggle("off",!open);$("#liveTxt").textContent=open?"Доставка працює зараз · Ужгород":"Доставка з 10:00 · Ужгород"})();
+
+/* ===== доставка: калькулятор ===== */
+$("#calcv").oninput=e=>{const v=+e.target.value;$("#calcr").textContent=!e.target.value?"":v>=FREE?"🎉 Доставка в межах міста безкоштовна":`Додайте ще ${fmt(FREE-v)} — і доставка безкоштовна`};
+
+/* ===== навігація ===== */
+const navEl=$("#mnav"),burg=$("#burg");
+function closeNav(){navEl.classList.remove("on");navEl.setAttribute("aria-hidden","true");burg.setAttribute("aria-expanded","false");if(!$("#drawer").classList.contains("on"))document.body.classList.remove("lock")}
+burg.onclick=()=>{const on=!navEl.classList.contains("on");navEl.classList.toggle("on",on);navEl.setAttribute("aria-hidden",!on);burg.setAttribute("aria-expanded",on);document.body.classList.toggle("lock",on)};
+navEl.onclick=e=>{if(e.target.closest("a"))closeNav()};
+const secs=["menu","restaurants","delivery","contacts"].map(id=>document.getElementById(id));
+{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$("nav.top a").forEach(a=>a.classList.toggle("act",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});secs.forEach(s=>io.observe(s))}
+
+/* ===== дрібниці ===== */
+let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),2200)}
+function fly(src){if(RM||!src)return;const a=src.getBoundingClientRect(),tg=innerWidth<760?$("#cartb2"):$("#cartb"),b=tg.getBoundingClientRect(),d=document.createElement("div"),sx=a.left+a.width/2-23,sy=a.top+a.height/2-23;
+ d.className="fly";d.style.cssText=`left:${sx}px;top:${sy}px`;document.body.append(d);
+ d.animate([{transform:"scale(1)",opacity:1},{transform:`translate(${(b.left+b.width/2-23-sx)/2}px,${b.top-sy-120}px) scale(.7)`,opacity:1,offset:.5},{transform:`translate(${b.left+b.width/2-23-sx}px,${b.top+b.height/2-23-sy}px) scale(.2)`,opacity:.5}],{duration:750,easing:"ease-in-out"}).onfinish=()=>d.remove()}
+const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");sio.unobserve(e.target)}}),{threshold:.12});
+$$("section h2,section .sub,.box,.rc,.ci,.calc").forEach(e=>{e.classList.add("sr");sio.observe(e)});
+
+/* ===== 3D: спільні helpers ===== */
+const HAS3D=(()=>{try{const t=document.createElement("canvas");return!!(window.THREE&&(t.getContext("webgl2")||t.getContext("webgl")))}catch(e){return false}})();
+function ENV(r){const T=THREE,c=document.createElement("canvas");c.width=256;c.height=128;const g=c.getContext("2d"),gr=g.createLinearGradient(0,0,0,128);gr.addColorStop(0,"#fff3dc");gr.addColorStop(.5,"#6b5a4a");gr.addColorStop(1,"#1a0d0a");g.fillStyle=gr;g.fillRect(0,0,256,128);g.fillStyle="#fff";g.fillRect(40,18,52,24);g.fillRect(170,28,38,16);g.fillStyle="#ffb48a";g.fillRect(110,50,30,10);const t=new T.CanvasTexture(c);t.mapping=T.EquirectangularReflectionMapping;const p=new T.PMREMGenerator(r),e=p.fromEquirectangular(t).texture;p.dispose();t.dispose();return e}
+function SHD(T,y,sc,op){const c=document.createElement("canvas");c.width=c.height=128;const g=c.getContext("2d"),q=g.createRadialGradient(64,64,4,64,64,64);q.addColorStop(0,`rgba(0,0,0,${op||.65})`);q.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=q;g.fillRect(0,0,128,128);const m=new T.Mesh(new T.PlaneGeometry(sc,sc),new T.MeshBasicMaterial({map:new T.CanvasTexture(c),transparent:true,depthWrite:false}));m.rotation.x=-Math.PI/2;m.position.y=y;return m}
+function radTex(stops,s=128){const c=document.createElement("canvas");c.width=c.height=s;const g=c.getContext("2d"),q=g.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);stops.forEach(([o,col])=>q.addColorStop(o,col));g.fillStyle=q;g.fillRect(0,0,s,s);return new THREE.CanvasTexture(c)}
+let BUMP=null;function bump(){if(BUMP)return BUMP;const c=document.createElement("canvas");c.width=c.height=128;const g=c.getContext("2d"),d=g.createImageData(128,128);for(let i=0;i<d.data.length;i+=4){const v=80+Math.random()*175;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}g.putImageData(d,0,0);BUMP=new THREE.CanvasTexture(c);BUMP.wrapS=BUMP.wrapT=THREE.RepeatWrapping;BUMP.repeat.set(3,3);return BUMP}
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* ===== 3D: героїчна піца ===== */
+(function hero(){
+ const host=$("#stage"),fb=$("#pzfb"),cv=$("#pzc");
+ if(!HAS3D){cv.remove();$("#phint").remove();fb.hidden=false;return}
+ try{
+ const T=THREE,mob=innerWidth<760,r=new T.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:"high-performance"});
+ r.setPixelRatio(Math.min(devicePixelRatio,mob?1.75:2));r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=.95;r.outputEncoding=T.sRGBEncoding;
+ const s=new T.Scene(),cam=new T.PerspectiveCamera(32,1,.1,60);cam.position.set(0,6.7,8.9);cam.lookAt(0,-.3,0);
+ s.environment=ENV(r);
+ s.add(new T.HemisphereLight(0xfff1dd,0x3a0e08,.55));
+ const key=new T.DirectionalLight(0xffe2b0,1.6);key.position.set(3,7,4);s.add(key);
+ const rim=new T.PointLight(0xff3b2a,2.4,22);rim.position.set(-4,1.5,-3);s.add(rim);
+ const warm=new T.PointLight(0xffb060,1.1,16);warm.position.set(3.5,1,3);s.add(warm);
+ const rnd=rng(7);
+ function tex(base,spots,n,big){const c=document.createElement("canvas");c.width=c.height=256;const g=c.getContext("2d");g.fillStyle=base;g.fillRect(0,0,256,256);
+  for(let i=0;i<n;i++){g.globalAlpha=.25+rnd()*.35;g.fillStyle=spots[i%spots.length];g.beginPath();g.ellipse(rnd()*256,rnd()*256,2+rnd()*(big||12),2+rnd()*(big||12),rnd()*3,0,7);g.fill()}
+  const t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.encoding=T.sRGBEncoding;return t}
+ const M=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:c,roughness:.6,envMapIntensity:.45,bumpMap:bump(),bumpScale:.012},o||{}));
+ const tDough=tex("#d99a48",["#a5621f","#ecc27a","#6a3210"],90),tSauce=tex("#b8200f",["#7d1208","#d8402a"],60),tCheese=tex("#f2bf3e",["#ffe08a","#d98f26","#b5641a","#fff2c0"],130,16),tPep=tex("#a31d12",["#6e0f0a","#c8402e","#e8a07a"],40,6);
+ [tDough,tSauce,tCheese].forEach(t=>t.repeat.set(.24,.24));
+ const mDough=M(0xffffff,{map:tDough,roughness:.85}),mCrust=M(0xffffff,{map:tDough,roughness:.9,bumpScale:.03}),mSauce=M(0xffffff,{map:tSauce,roughness:.35}),mCheese=M(0xffffff,{map:tCheese,roughness:.32,bumpScale:.02}),
+  mPep=M(0xffffff,{map:tPep,roughness:.42}),mBas=M(0x17591f,{roughness:.5,side:T.DoubleSide}),mOl=M(0x1d1d1f,{roughness:.25}),mChi=M(0xd4261c,{roughness:.3}),mChiG=M(0x3f9b3a,{roughness:.35}),mMu=M(0xe9dcc4,{roughness:.7}),mBlob=M(0xf4c94c,{roughness:.22});
+ /* дошка */
+ const wc=document.createElement("canvas");wc.width=wc.height=512;{const g=wc.getContext("2d");g.fillStyle="#5a3418";g.fillRect(0,0,512,512);for(let i=0;i<60;i++){g.strokeStyle=i%2?"#4a2a12":"#6e4220";g.globalAlpha=.5;g.lineWidth=1+rnd()*3;g.beginPath();g.arc(256+rnd()*8,256+rnd()*8,i*4.4+rnd()*3,0,7);g.stroke()}}
+ const tW=new T.CanvasTexture(wc);tW.encoding=T.sRGBEncoding;
+ const P=new T.Group(),F=new T.Group();F.rotation.x=-Math.PI/2;P.add(F);s.add(P);
+ const board=new T.Mesh(new T.CylinderGeometry(2.55,2.6,.16,mob?48:80),[M(0x4a2a12,{roughness:.7}),M(0xffffff,{map:tW,roughness:.65}),M(0x3a200e)]);board.position.y=-.13;P.add(board);
+ const shadow=SHD(T,-.22,7.4,.7);P.add(shadow);
+ const N=8,RAD=2.08,step=Math.PI*2/N,cs=mob?8:14,slices=[],strings=[];
+ const sector=(rad,a0,a1)=>{const sh=new T.Shape();sh.moveTo(0,0);sh.lineTo(rad*Math.cos(a0),rad*Math.sin(a0));sh.absarc(0,0,rad,a0,a1,false);sh.lineTo(0,0);return sh};
+ const ex=(sh,o)=>new T.ExtrudeGeometry(sh,Object.assign({curveSegments:cs,bevelEnabled:false},o));
+ for(let i=0;i<N;i++){
+  const a0=i*step,a1=a0+step,m=a0+step/2,S=new T.Group(),gap=.014;S.userData={i,m,p:0,tp:0,sn:0};
+  const lD=new T.Group(),lS=new T.Group(),lC=new T.Group(),lT=new T.Group();
+  const dg=new T.Mesh(ex(sector(RAD-.04,a0,a1),{depth:.18,bevelEnabled:true,bevelThickness:.04,bevelSize:.04,bevelSegments:2}),mDough);lD.add(dg);
+  const cr=new T.Mesh(new T.TorusGeometry(RAD-.12,.19,10,cs,step),mCrust);cr.rotation.z=a0;cr.position.z=.2;cr.scale.z=.85;lD.add(cr);
+  lS.add(new T.Mesh(ex(sector(RAD-.2,a0+.004,a1-.004),{depth:.03}),mSauce));lS.position.z=.22;
+  lC.add(new T.Mesh(ex(sector(RAD-.24,a0+.006,a1-.006),{depth:.05,bevelEnabled:true,bevelThickness:.025,bevelSize:.025,bevelSegments:2}),mCheese));lC.position.z=.26;
+  for(let j=0;j<4;j++){const aa=a0+.1+rnd()*(step-.2),d=.3+rnd()*1.45,b=new T.Mesh(new T.SphereGeometry(.12+rnd()*.12,10,8),mBlob);b.scale.z=.3;b.position.set(Math.cos(aa)*d,Math.sin(aa)*d,.07);lC.add(b)}
+  const tops=[];const put=(mesh,rmin,rmax,pad)=>{for(let k=0;k<12;k++){const aa=a0+pad+rnd()*(step-2*pad),d=rmin+rnd()*(rmax-rmin),px=Math.cos(aa)*d,py=Math.sin(aa)*d;if(tops.every(t=>Math.hypot(t.position.x-px,t.position.y-py)>.42)||k===11){mesh.position.set(px,py,mesh.position.z);tops.push(mesh);lT.add(mesh);return}}};
+  for(let j=0;j<2;j++){const p=new T.Mesh(new T.CylinderGeometry(.27,.28,.05,20),mPep);p.rotation.x=Math.PI/2;p.rotation.y=rnd()*.3;p.position.z=.02;put(p,.55,1.6,.2)}
+  {const o=new T.Mesh(new T.TorusGeometry(.1,.045,8,16),mOl);o.position.z=.03;put(o,.4,1.65,.14)}
+  {const b=new T.Mesh(new T.SphereGeometry(.2,12,8),mBas);b.scale.set(1.5,.75,.12);b.rotation.z=rnd()*3;b.position.z=.05;put(b,.5,1.5,.16)}
+  if(i%2===0){const c=new T.Mesh(new T.TorusGeometry(.085,.032,8,14),mChi);c.position.z=.03;put(c,.4,1.6,.12)}
+  else{const c=new T.Mesh(new T.CylinderGeometry(.15,.15,.04,14,1,false,0,Math.PI),mMu);c.rotation.x=Math.PI/2;c.position.z=.03;put(c,.5,1.5,.15)}
+  if(i%3===1){const c=new T.Mesh(new T.TorusGeometry(.08,.03,8,14),mChiG);c.position.z=.03;put(c,.4,1.6,.12)}
+  lT.position.z=.36;tops.forEach(t=>{t.userData.z0=t.position.z;t.userData.dl=.35+rnd()*1.3;t.userData.rz=t.rotation.z});
+  S.add(lD,lS,lC,lT);S.position.set(Math.cos(m)*gap,Math.sin(m)*gap,0);
+  S.userData.L=[[lS,.22,.9],[lC,.26,1.7],[lT,.36,2.6]];S.userData.tops=tops;
+  S.traverse(o=>{if(o.isMesh)o.userData.slice=i});
+  F.add(S);slices.push(S);
+  /* сирні нитки */
+  const st=[];for(let j=0;j<5;j++){const sm=new T.Mesh(new T.CylinderGeometry(1,1,1,6,1,true),mBlob);sm.visible=false;sm.userData={r:.12+j*.11,da:(j-2)*.05};F.add(sm);st.push(sm)}strings.push(st);
+ }
+ /* ефекти: сяйво, пара, іскри, інгредієнти на орбіті */
+ const glow=new T.Sprite(new T.SpriteMaterial({map:radTex([[0,"rgba(255,90,50,.9)"],[.35,"rgba(212,38,28,.35)"],[1,"rgba(0,0,0,0)"]]),blending:T.AdditiveBlending,depthWrite:false,transparent:true}));
+ glow.position.set(0,-1.6,-2.4);glow.scale.set(6.4,6.4,1);glow.renderOrder=-1;s.add(glow);
+ const sTex=radTex([[0,"rgba(255,255,255,.9)"],[.4,"rgba(255,255,255,.35)"],[1,"rgba(255,255,255,0)"]]),steam=[];
+ for(let i=0;i<(mob?9:16);i++){const sp=new T.Sprite(new T.SpriteMaterial({map:sTex,transparent:true,depthWrite:false,opacity:0,color:0xfff4e6}));sp.userData={t:rnd(),sp:.12+rnd()*.12,x:(rnd()-.5)*2.6,z:(rnd()-.5)*2,w:rnd()*6};s.add(sp);steam.push(sp)}
+ const EN=mob?70:160,eg=new T.BufferGeometry(),ep=new Float32Array(EN*3),ev=[];
+ for(let i=0;i<EN;i++){ep[i*3]=(rnd()-.5)*8;ep[i*3+1]=-2+rnd()*6;ep[i*3+2]=(rnd()-.5)*6;ev.push(.25+rnd()*.6)}
+ eg.setAttribute("position",new T.BufferAttribute(ep,3));
+ const embers=new T.Points(eg,new T.PointsMaterial({size:mob?.09:.075,map:radTex([[0,"rgba(255,230,160,1)"],[.3,"rgba(255,120,40,.8)"],[1,"rgba(255,60,20,0)"]],64),transparent:true,depthWrite:false,blending:T.AdditiveBlending,color:0xffffff}));s.add(embers);
+ const ORB=new T.Group();s.add(ORB);
+ const mk=[
+  ()=>{const g=new T.Group(),b=new T.Mesh(new T.ConeGeometry(.16,.9,12),M(0xd4261c,{roughness:.25}));b.rotation.z=Math.PI;g.add(b);const st=new T.Mesh(new T.CylinderGeometry(.04,.05,.2,6),M(0x2f8a3a));st.position.y=.5;g.add(st);return g},
+  ()=>{const g=new T.Group(),h=new T.Mesh(new T.SphereGeometry(.3,18,12,0,Math.PI*2,0,Math.PI/2),M(0xd4261c,{roughness:.3}));g.add(h);const c=new T.Mesh(new T.CircleGeometry(.29,18),M(0xe8604a,{roughness:.5}));c.rotation.x=Math.PI/2;g.add(c);[[.1,0],[-.08,.08],[-.04,-.11]].forEach(p=>{const sd=new T.Mesh(new T.SphereGeometry(.035,6,4),M(0xf3d58a));sd.position.set(p[0],-.01,p[1]);g.add(sd)});g.rotation.x=Math.PI;return g},
+  ()=>{const b=new T.Mesh(new T.SphereGeometry(.26,12,8),M(0x2f8a3a,{side:T.DoubleSide}));b.scale.set(1.5,.12,.8);return b},
+  ()=>{const g=new T.Group(),c=new T.Mesh(new T.SphereGeometry(.24,14,8,0,Math.PI*2,0,Math.PI/2),M(0xd9c7a8,{roughness:.75}));g.add(c);const st=new T.Mesh(new T.CylinderGeometry(.08,.1,.26,10),M(0xf0e6d2));st.position.y=-.12;g.add(st);return g},
+  ()=>new T.Mesh(new T.BoxGeometry(.34,.26,.28),M(0xf4c94c,{roughness:.35})),
+  ()=>new T.Mesh(new T.TorusGeometry(.14,.06,10,18),M(0x1d1d1f,{roughness:.2})),
+  ()=>{const p=new T.Mesh(new T.CylinderGeometry(.24,.24,.05,18),mPep);return p}
+ ];
+ const OB=[];for(let i=0;i<(mob?6:9);i++){const o=mk[i%mk.length]();o.userData={a:i/(mob?6:9)*Math.PI*2,y:.3+rnd()*1.2,sp:.8+rnd()*.6,rs:(rnd()-.5)*.04};ORB.add(o);OB.push(o)}
+ /* інтеракція */
+ const lab=$("#ly"),rg=$("#exr"),ray=new T.Raycaster(),v2=new T.Vector2();
+ let k=0,vis=true,t0=performance.now(),last=t0,spin=0,vy=0,drag=null,mx=0,my=0,hover=-1,pulled=-1,hintOff=false;
+ const pick=(e)=>{const b=cv.getBoundingClientRect();v2.set((e.clientX-b.left)/b.width*2-1,-(e.clientY-b.top)/b.height*2+1);ray.setFromCamera(v2,cam);const h=ray.intersectObjects(slices,true)[0];return h?h.object.userData.slice:-1};
+ function pull(i){if(pulled===i){slices[i].userData.tp=0;pulled=-1;return}if(pulled>=0)slices[pulled].userData.tp=0;pulled=i;slices[i].userData.tp=1;slices[i].userData.sn=0;
+  chef.say&&chef.say(["Тягни сміливіше — сир тягнеться!","Оце шматочок! Гарячий, обережно.","Найсмачніший — завжди перший.","Бачиш, як тягнеться моцарела?"][Math.random()*4|0]);
+  if(!hintOff){hintOff=true;$("#phint").style.opacity=0}}
+ cv.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,lx:e.clientX,moved:0,t:performance.now()}});
+ addEventListener("pointermove",e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;
+  if(drag){const dx=e.clientX-drag.lx;drag.lx=e.clientX;drag.moved+=Math.abs(dx);vy=dx*.006;spin+=dx*.008;if(drag.moved>12&&!hintOff){hintOff=true;$("#phint").style.opacity=0}}
+  else if(e.pointerType==="mouse"&&e.target===cv){const h=pick(e);if(h!==hover){hover=h;cv.classList.toggle("pt",h>=0)}}},{passive:true});
+ const end=e=>{if(!drag)return;if(drag.moved<8&&performance.now()-drag.t<500&&e.type==="pointerup"){const h=pick(e);if(h>=0)pull(h)}drag=null};
+ addEventListener("pointerup",end);addEventListener("pointercancel",()=>drag=null);
+ cv.addEventListener("pointerleave",()=>{hover=-1;cv.classList.remove("pt")});
+ $("#slb").onclick=()=>{let i=Math.random()*N|0;if(i===pulled)i=(i+1)%N;pull(i)};
+ $("#rbb").onclick=()=>{if(pulled>=0){slices[pulled].userData.tp=0;pulled=-1}rg.value=0;t0=performance.now();chef.say&&chef.say("Збираємо заново: тісто, соус, сир — і начинка!")};
+ let lt0=0;rg.addEventListener("input",()=>{if(!lt0){lt0=1;chef.say&&chef.say("О, розбираємо піцу на шари — так кухарі дивляться на смак.");setTimeout(()=>lt0=0,20000)}});
+ $("#pctl").hidden=false;
+ function size(){const w=cv.clientWidth,h=cv.clientHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+ new ResizeObserver(size).observe(cv);size();
+ new IntersectionObserver(e=>{const was=vis;vis=e[0].isIntersecting;if(vis&&!was){last=performance.now();requestAnimationFrame(loop)}}).observe(host);
+ document.addEventListener("visibilitychange",()=>{if(!document.hidden&&vis){last=performance.now();requestAnimationFrame(loop)}});
+ const up=new T.Vector3(0,1,0),va=new T.Vector3(),vb=new T.Vector3(),vd=new T.Vector3(),ez=x=>1-Math.pow(1-Math.min(1,Math.max(0,x)),3),bounce=x=>{x=Math.min(1,Math.max(0,x));const n=7.5625,d=2.75;return x<1/d?n*x*x:x<2/d?n*(x-=1.5/d)*x+.75:x<2.5/d?n*(x-=2.25/d)*x+.9375:n*(x-=2.625/d)*x+.984375};
+ function loop(now){if(!vis||document.hidden)return;requestAnimationFrame(loop);now=now||performance.now();const dt=Math.min(.05,(now-last)/1000);last=now;const t=(now-t0)/1000,tg=now/1000;
+  const sy=Math.min(1,scrollY/700),tk=rg.value/100;k+=(tk-k)*Math.min(1,dt*5);lab.classList.toggle("on",k>.25);
+  if(!drag){vy+=((RM?0:.0035)-vy)*Math.min(1,dt*2);spin+=vy*(dt*60)}
+  P.rotation.y=spin;P.rotation.x+=((my*.35+sy*.45)-P.rotation.x)*Math.min(1,dt*3);P.rotation.z+=(-mx*.3-P.rotation.z)*Math.min(1,dt*3);
+  const intro=RM?1:ez(t/1.1);P.position.y=-.2-sy*.7-k*.6+(1-bounce(t/1.1))*2.5*(RM?0:1);P.scale.setScalar((1-sy*.22)*(.6+.4*intro));
+  slices.forEach((S,i)=>{const u=S.userData;u.p+=(u.tp-u.p)*Math.min(1,dt*(u.tp?4:6));const hv=(i===hover&&!u.tp?.12:0);u.h=(u.h||0)+(hv-(u.h||0))*Math.min(1,dt*8);
+   const d=.014+u.p*1.25+u.h,c=Math.cos(u.m),sn=Math.sin(u.m);S.position.set(c*d,sn*d,u.p*.55+u.h*.6);S.rotation.set(-sn*u.p*.18,c*u.p*.18,0);
+   u.L.forEach(([g,z,l])=>g.position.z=z+l*k);
+   u.tops.forEach(tp=>{const f=RM?1:bounce((t-tp.userData.dl)/.55);tp.position.z=tp.userData.z0+(1-f)*3.2;tp.visible=t>tp.userData.dl-.05||RM;tp.rotation.z=tp.userData.rz+(1-f)*4});
+   if(u.tp&&u.p>.9)u.sn=Math.min(1,u.sn+dt*.55);if(!u.tp)u.sn=0;
+   strings[i].forEach(sm=>{const show=u.p>.03&&u.sn<1&&k<.1;sm.visible=show;if(!show)return;const r0=sm.userData.r,aa=u.m+sm.userData.da;
+    va.set(Math.cos(aa)*r0,Math.sin(aa)*r0,.33);vb.set(va.x+S.position.x,va.y+S.position.y,va.z+S.position.z-.02);
+    const sag=(1-u.sn)*.0+u.sn*.35;vd.subVectors(vb,va);const len=vd.length();if(len<.02){sm.visible=false;return}
+    sm.position.copy(va).addScaledVector(vd,.5);sm.position.z-=sag*.5;sm.quaternion.setFromUnitVectors(up,vd.normalize());const th=.03*(1-u.sn)/(1+len*1.4);sm.scale.set(th,len,th)})});
+  /* пара */
+  steam.forEach(sp=>{const u=sp.userData;u.t+=dt*u.sp;if(u.t>1){u.t=0;u.x=(Math.random()-.5)*2.6;u.z=(Math.random()-.5)*2}
+   sp.position.set(u.x+Math.sin(tg+u.w)*.25,P.position.y+.5+u.t*3,u.z);const sc=.6+u.t*1.9;sp.scale.set(sc,sc,1);sp.material.opacity=Math.sin(Math.PI*u.t)*.16*intro*(1-sy*.6)});
+  /* іскри */
+  const pa=eg.attributes.position;for(let i=0;i<EN;i++){let y=pa.array[i*3+1]+ev[i]*dt;if(y>4){y=-2;pa.array[i*3]=(Math.random()-.5)*8}pa.array[i*3+1]=y;pa.array[i*3]+=Math.sin(tg*1.3+i)*.002}pa.needsUpdate=true;
+  embers.material.opacity=.6+Math.sin(tg*3)*.15;
+  /* орбіта */
+  OB.forEach((o,i)=>{const u=o.userData,a=u.a+tg*.22*u.sp*(RM?0:1);o.position.set(Math.cos(a)*(mob?2.55:2.75),P.position.y+u.y+Math.sin(tg*1.1+i)*.25,Math.sin(a)*1.6);o.rotation.x+=u.rs*(dt*60);o.rotation.y+=.01*(dt*60);o.scale.setScalar(ez((t-.9-i*.08)/.6)*(1-k*.6))});
+  glow.material.opacity=(.55+Math.sin(tg*1.6)*.1)*intro;rim.intensity=2.1+Math.sin(tg*2.3)*.4;
+  r.render(s,cam)}
+ requestAnimationFrame(loop);
+ }catch(err){console.warn(err);cv.remove();fb.hidden=false;$("#pctl").hidden=true}
+})();
+
+/* ===== 3D: моделі страв у картці ===== */
+let cur3=null;
+function v3(x){if(!HAS3D)return;if(cur3)cur3();const el=$("#v3"),T=THREE,mob=innerWidth<760,k=kind(x);let r;
+ try{r=new T.WebGLRenderer({antialias:!mob,alpha:true})}catch(e){return}
+ r.setPixelRatio(Math.min(devicePixelRatio,mob?1.5:2));r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=1.2;r.outputEncoding=T.sRGBEncoding;el.append(r.domElement);
+ const w=el.clientWidth,h=el.clientHeight;r.setSize(w,h);const s=new T.Scene(),cam=new T.PerspectiveCamera(35,w/h,.1,50);cam.position.set(0,3.2,7);cam.lookAt(0,.2,0);
+ s.add(new T.HemisphereLight(0xfff1dd,0x401008,1));s.environment=ENV(r);const dl=new T.DirectionalLight(0xffe2b0,1.4);dl.position.set(3,6,4);s.add(dl);const pl=new T.PointLight(0xe3b868,1,20);pl.position.set(-4,3,3);s.add(pl);
+ const M=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:c,roughness:.55,envMapIntensity:.5,bumpMap:bump(),bumpScale:.01},o||{})),cy=(a,b,c,col,o)=>new T.Mesh(new T.CylinderGeometry(a,b,c,mob?24:48),M(col,o)),G=new T.Group();
+ let orb=[0xd4261c,0x2f8a3a,0xe3b868];
+ if(k==="pizza"){G.add(cy(2,2,.28,0xe0a95b));const t=new T.Mesh(new T.TorusGeometry(1.95,.2,12,48),M(0xd8963f));t.rotation.x=Math.PI/2;t.position.y=.1;G.add(t);const sa=cy(1.8,1.8,.05,0xc8281c);sa.position.y=.17;G.add(sa);const ch=cy(1.75,1.75,.1,0xf6d36a,{roughness:.35});ch.position.y=.25;G.add(ch);for(let i=0;i<9;i++){const p=cy(.32,.32,.07,0xb3261a);p.position.set(Math.cos(i*2.4)*(.4+i%4*.3)*1.3,.34,Math.sin(i*2.4)*(.4+i%4*.3)*1.3);G.add(p)}for(let i=0;i<30;i++){const a=Math.random()*6.28,d=Math.sqrt(Math.random())*1.6,b=new T.Mesh(new T.SphereGeometry(.15+Math.random()*.17,10,8),M(0xf4c94c,{roughness:.22}));b.scale.y=.28;b.position.set(Math.cos(a)*d,.3,Math.sin(a)*d);G.add(b)}G.scale.setScalar(1.05)}
+ else if(k==="burger"){[[1.6,1.7,.5,0xd98b3a,-.6],[1.75,1.75,.12,0x4cab4c,-.25],[1.6,1.6,.4,0x5a2a14,0],[1.7,1.7,.08,0xf4c94c,.24],[1.55,1.55,.14,0xd4261c,.35]].forEach(([a,b,c,col,y])=>{const m=cy(a,b,c,col);m.position.y=y;G.add(m)});const tb=new T.Mesh(new T.SphereGeometry(1.65,32,16,0,Math.PI*2,0,Math.PI/2),M(0xd98b3a,{roughness:.45}));tb.scale.y=.6;tb.position.y=.45;G.add(tb);for(let i=0;i<14;i++){const sd=new T.Mesh(new T.SphereGeometry(.05,6,4),M(0xf5eddf));const a=i*2.4,d=.3+(i%4)*.3;sd.position.set(Math.cos(a)*d,.45+Math.sqrt(Math.max(0,1-(d/1.65)**2))*.98,Math.sin(a)*d);G.add(sd)}G.position.y=.1;orb=[0x4cab4c,0xd4261c,0xf4c94c]}
+ else if(k==="roll"){for(let i=-1;i<2;i++){const g=new T.Group();g.add(cy(.6,.6,.8,0x1b1f1c));g.add(cy(.52,.52,.82,0xf7f3ea));g.add(cy(.22,.22,.84,i?0xf07a3c:0xe3a02e));g.position.x=i*1.5;G.add(g)}orb=[0xf07a3c,0x2f8a3a,0xf7f3ea]}
+ else if(k==="drink"){const b=cy(.65,.65,2.2,0x8c1a12,{roughness:.2,metalness:.3});G.add(b);const lb=cy(.66,.66,.8,0xf5eddf);lb.position.y=.1;G.add(lb);const n=cy(.3,.65,.5,0x8c1a12,{roughness:.2,metalness:.3});n.position.y=1.35;G.add(n);const cp=cy(.32,.32,.18,0xe3b868,{metalness:.8});cp.position.y=1.68;G.add(cp);G.position.y=-.2;orb=[0x9fd8f0,0xffffff,0xe3b868]}
+ else if(k==="cake"){[[0xf5eddf,0],[0x6b3a1f,.4],[0xf5eddf,.8],[0x6b3a1f,1.2]].forEach(([c,y])=>{const l=cy(1.4,1.4,.36,c,{roughness:.4});l.position.y=y;G.add(l)});const ch=new T.Mesh(new T.SphereGeometry(.28,16,12),M(0xb3081a,{roughness:.2}));ch.position.y=1.65;G.add(ch);G.position.y=-.8;orb=[0xb3081a,0xf5eddf,0x6b3a1f]}
+ else{const bw=new T.Mesh(new T.SphereGeometry(1.8,mob?24:40,20,0,7,Math.PI/2,Math.PI/2),M(0xf5eddf,{side:T.DoubleSide,roughness:.3}));G.add(bw);const f=cy(1.62,1.5,.2,0xc9b27c);f.position.y=-.35;G.add(f);for(let i=0;i<14;i++){const sp=new T.Mesh(new T.SphereGeometry(.2+i%3*.06,10,8),M([0xd4261c,0x2f8a3a,0xe3b868,0xf5eddf][i%4]));const a=i*2.2,d=.2+i%5*.28;sp.position.set(Math.cos(a)*d*1.1,-.2+(i%3)*.08,Math.sin(a)*d*1.1);G.add(sp)}G.position.y=.7;orb=[0x2f8a3a,0xd4261c,0xe3b868]}
+ s.add(G);s.add(SHD(T,-1.15,6.5));const O=[];for(let i=0;i<8;i++){const o=new T.Mesh(i%2?new T.SphereGeometry(.14,10,8):new T.TorusGeometry(.12,.05,8,12),M(orb[i%3],{emissive:orb[i%3],emissiveIntensity:.25}));s.add(o);O.push(o)}
+ let dr=false,lx=0,ly=0,vy=.01,vx=0,on=true,t=0,t0=performance.now();
+ el.onpointerdown=e=>{dr=true;lx=e.clientX;ly=e.clientY;el.style.cursor="grabbing"};
+ el.onpointermove=e=>{if(!dr)return;vy=(e.clientX-lx)*.01;vx=(e.clientY-ly)*.006;lx=e.clientX;ly=e.clientY;G.rotation.y+=vy;G.rotation.x=Math.max(-.8,Math.min(.8,G.rotation.x+vx))};
+ el.onpointerup=el.onpointercancel=el.onpointerleave=()=>{dr=false;el.style.cursor="grab"};
+ function lp(){if(!on)return;requestAnimationFrame(lp);t+=.016;if(!dr){vy+=((RM?0:.01)-vy)*.03;G.rotation.y+=vy;G.rotation.x*=.97}
+  const e=Math.min(1,(performance.now()-t0)/600);G.scale.setScalar((k==="pizza"?1.05:1)*(1-Math.pow(1-e,3)));
+  O.forEach((o,i)=>{const a=t*.7+i*.785;o.position.set(Math.cos(a)*2.7,.6+Math.sin(t+i)*.6,Math.sin(a)*2.7*.6);o.rotation.x+=.03});r.render(s,cam)}
+ lp();cur3=()=>{on=false;r.dispose();r.domElement.remove();cur3=null};$("#dlg").addEventListener("close",()=>cur3&&cur3(),{once:true})}
+
+/* ===== Кухар ===== */
+const catPhrase=c=>/Піц|Pizza|Yankee/.test(c)?"Піца — класика, яка не підводить!":/Салат/.test(c)?"Свіжість — це теж смак!":/Суп/.test(c)?"Гарячий суп лікує все, кажуть кухарі.":/Роли|Сети/.test(c)?"Рис, риба і чіткий ніж — ось і рол.":/Десерт/.test(c)?"Десерт — це не розкіш, а обовʼязок!":/Лимонад|Пиво/.test(c)?"Гарна страва любить гарний напій.":/Снідан/.test(c)?"Добрий день починається зі сніданку!":/Бургер/.test(c)?"Бургер їдять двома руками — і з усмішкою!":/Азії/.test(c)?"Трохи Азії в Ужгороді — чому б ні?":c==="Усі"?"Усе меню перед тобою — гортай!":"Оце вибір! Гортай далі.";
+const chef=(function(){
+ const C=document.createElement("div");C.id="chef";C.setAttribute("role","status");C.setAttribute("aria-live","polite");
+ C.innerHTML='<svg viewBox="0 0 100 120" width="84" height="100" aria-label="Кухар Chili — натисніть, щоб отримати пораду" role="button" tabindex="0"><g fill="#fff" stroke="#e2dcd0"><circle cx="33" cy="30" r="13"/><circle cx="50" cy="22" r="16"/><circle cx="67" cy="30" r="13"/><rect x="32" y="32" width="36" height="14" rx="3"/><path d="M18 120c0-22 14-34 32-34s32 12 32 34z"/></g><g id="arm"><path d="M76 98q14-6 16-20" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="92" cy="76" r="6" fill="#f3cba8"/></g><path d="M40 88l10 14 10-14z" fill="#d4261c"/><circle cx="50" cy="106" r="2" fill="#d4261c"/><circle cx="50" cy="114" r="2" fill="#d4261c"/><circle cx="50" cy="62" r="21" fill="#f3cba8"/><circle cx="38" cy="68" r="4" fill="#f0a08a" opacity=".6"/><circle cx="62" cy="68" r="4" fill="#f0a08a" opacity=".6"/><circle cx="42" cy="58" r="4" fill="#fff"/><circle cx="58" cy="58" r="4" fill="#fff"/><circle id="cpl" cx="42" cy="58" r="2" fill="#222"/><circle id="cpr" cx="58" cy="58" r="2" fill="#222"/><ellipse class="lid" cx="42" cy="58" rx="4.6" ry="4.6" fill="#f3cba8"/><ellipse class="lid" cx="58" cy="58" rx="4.6" ry="4.6" fill="#f3cba8"/><path d="M37 51q5-3 9 0M54 51q5-3 9 0" stroke="#4a2c18" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M33 70q8-8 17-3q9-5 17 3q-8 6-17 2q-9 4-17-2z" fill="#4a2c18"/><path id="mo" d="M43 76q7 5 14 0" stroke="#7a2a1a" stroke-width="2" fill="none" stroke-linecap="round"/></svg><div class="cbub" id="cbub"></div>';
+ document.body.append(C);
+ const bub=C.querySelector("#cbub"),mo=C.querySelector("#mo"),pl=C.querySelector("#cpl"),pr=C.querySelector("#cpr"),svg=C.querySelector("svg");
+ const idle=["Секрет хрусткої піци — гаряча піч і терпіння.","Свіжий базилік додають наприкінці — щоб пахнув.","Добрий соус не любить поспіху.","Тісто відпочиває, а кухар ні!","Пармезан — як гарний жарт: трохи, але в точку.","Чилі — це не просто гостро, це характер.","Моцарела найкраще розтягується, коли гаряча.","Рецепт щастя: тісто, томати, сир і гарна компанія.","Головний інгредієнт будь-якої страви — настрій кухаря.","Паста любить воду, солону, як море.","Гострий ніж — щасливий кухар.","Сніданок без кави — як піца без сиру.","Від 500 ₴ доставка по місту — безкоштовна!","Спробуй витягнути шматочок піци нагорі 😉"];
+ let tm,last=-1,lt=0;
+ function say(t){if(!t)return;bub.textContent=t;C.classList.add("talk","jump");mo.setAttribute("d","M44 75q6 9 12 0z");mo.setAttribute("fill","#7a2a1a");lt=Date.now();clearTimeout(tm);
+  tm=setTimeout(()=>{C.classList.remove("talk");mo.setAttribute("d","M43 76q7 5 14 0");mo.setAttribute("fill","none")},6000);setTimeout(()=>C.classList.remove("jump"),700)}
+ const tip=()=>{let i;do i=Math.random()*idle.length|0;while(i===last);last=i;say(idle[i])};
+ svg.addEventListener("click",()=>{C.classList.remove("wave");void C.offsetWidth;C.classList.add("wave");tip()});
+ svg.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tip()}});
+ setTimeout(()=>{C.classList.add("wave");say("Вітаю в Chili Pizza! Обирай, що до смаку.")},1500);
+ setInterval(()=>{if(document.hidden||Date.now()-lt<9000)return;tip()},16000);
+ (function blink(){setTimeout(()=>{C.classList.add("blink");setTimeout(()=>{C.classList.remove("blink");blink()},140)},2500+Math.random()*3500)})();
+ document.addEventListener("click",e=>{const q=s=>e.target.closest(s);
+  if(q("#cartb,#cartb2"))say(cart.length?"О, кошик не порожній! Смачно буде.":"Кошик порожній — час щось обрати!");
+  else if(q("a[href^='tel:']"))say("Дзвони — оператор уже чекає!");
+  else if(q("a[href*=choiceqr]"))say("Оформлення відкриється в ChoiceQR.");
+  else if(q("nav a,.bn a,.hero .btn"))say("Рушаємо далі!")});
+ let st;$("#q").addEventListener("input",()=>{clearTimeout(st);st=setTimeout(()=>say("Шукаєш щось конкретне? Зараз знайдемо."),700)});
+ addEventListener("pointermove",e=>{const b=svg.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(e.clientX-b.left-b.width/2)/300))*1.8,dy=Math.max(-1,Math.min(1,(e.clientY-b.top-b.height/2)/300))*1.5;pl.setAttribute("transform",`translate(${dx} ${dy})`);pr.setAttribute("transform",`translate(${dx} ${dy})`)},{passive:true});
+ [$("#dlg"),$("#ck")].forEach(d=>new MutationObserver(()=>{const o=$("#dlg").open?$("#dlg"):$("#ck").open?$("#ck"):null;if(o){o.append(C);C.classList.add("indlg")}else{document.body.append(C);C.classList.remove("indlg")}}).observe(d,{attributes:true,attributeFilter:["open"]}));
+ return{say};
+})();
+
+draw();render();
+</script></body></html>
